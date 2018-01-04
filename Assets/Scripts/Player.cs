@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
 
 	public float speed;
 	public float jumpHeight;
+	public float jumpBox;
 	private Rigidbody2D rigidBody;
 	private bool isGrounded;
 
@@ -17,10 +18,21 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		// Check if player is grounded.
-		Vector2 endpoint = transform.position;
-		endpoint.y -= 0.9f;
-		isGrounded = Physics2D.Linecast(transform.position, endpoint, 1 << LayerMask.NameToLayer("Ground"));
+		// Check if player is grounded, via reference frame of its two corners.
+		Vector2 leftCheck = new Vector2(transform.position.x - jumpBox, transform.position.y);
+		Vector2 rightCheck = new Vector2(transform.position.x + jumpBox, transform.position.y);
+		Vector2 leftEnd = leftCheck;
+		leftEnd.y -= jumpBox * 1.4f;
+		Vector2 rightEnd = rightCheck;
+		rightEnd.y -= jumpBox * 1.4f;
+
+		Debug.DrawLine(leftCheck, leftEnd, Color.green);
+		Debug.DrawLine(rightCheck, rightEnd, Color.green);
+
+		if(Physics2D.Linecast(leftCheck, leftEnd, 1 << LayerMask.NameToLayer("Ground"))
+			|| Physics2D.Linecast(rightCheck, rightEnd, 1 << LayerMask.NameToLayer("Ground"))) {
+			isGrounded = true;
+		}
 
 		float horizontal = Input.GetAxis("Horizontal");
 
