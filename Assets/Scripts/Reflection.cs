@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Reflection : Character {
-	protected override void Movement(float horizontal, bool jump) {
-		// Moves LR and jumps if input & able.
-		if (!jump) {
-			rigidBody.velocity = new Vector2 (-(speed * horizontal), rigidBody.velocity.y);
-		} else {
+public class Reflection : Player {
+	protected override void Movement(float horizontal) {
+		// Moves RL and jumps if input & able.
+		if (isGrounded && Input.GetKeyDown ("x")) {
 			rigidBody.velocity = new Vector2 (-(speed * horizontal), jumpHeight);
+		} else {
+			rigidBody.velocity = new Vector2 (-(speed * horizontal), rigidBody.velocity.y);
 			isGrounded = false;
 		}
 	}
