@@ -17,7 +17,7 @@ abstract public class Player : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
 		// Check if player is grounded, via three points: its center and its two corners.
 		float end = jumpBox * 1.4f;
 		Vector2 leftCheck = new Vector2(transform.position.x - jumpBox, transform.position.y);
@@ -41,8 +41,8 @@ abstract public class Player : MonoBehaviour {
 		float horizontal = Input.GetAxis("Horizontal");
 
 		// Call Movement function.
-		Movement (horizontal);
+		Movement (horizontal, Input.GetKeyDown ("j"), Input.GetKeyDown ("l"));
 	}
 
-	protected abstract void Movement (float horizontal);
+	protected abstract void Movement (float horizontal, bool charjump, bool reflectjump);
 }
