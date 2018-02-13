@@ -9,11 +9,20 @@ abstract public class Player : MonoBehaviour {
 	public float jumpBox;
 	protected Rigidbody2D rigidBody;
 	protected bool isGrounded;
+	public Vector2 respawn;
 
 	// Use this for initialization
 	void Start () {
 		rigidBody = GetComponent<Rigidbody2D> ();
 		isGrounded = true;
+		respawn = transform.position;
+	}
+
+	protected void OnCollisionEnter2D (Collision2D col){
+		if (col.gameObject.tag == "Death") {
+			GameObject.Find("Character").transform.position = GameObject.Find("Character").GetComponent<Character>().respawn;
+			GameObject.Find("Reflection").transform.position = GameObject.Find("Reflection").GetComponent<Reflection>().respawn;
+		}
 	}
 
 	// Update is called once per frame
@@ -41,8 +50,8 @@ abstract public class Player : MonoBehaviour {
 		float horizontal = Input.GetAxis("Horizontal");
 
 		// Call Movement function.
-		Movement (horizontal, Input.GetKeyDown ("j"), Input.GetKeyDown ("l"));
+		Movement (horizontal, Input.GetKeyDown ("k"));
 	}
 
-	protected abstract void Movement (float horizontal, bool charjump, bool reflectjump);
+	protected abstract void Movement (float horizontal, bool jump);
 }

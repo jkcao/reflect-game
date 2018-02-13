@@ -16,7 +16,9 @@ public class FollowBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-		transform.position = new Vector3(trackingTarget.position.x + xOffset, 
-			trackingTarget.position.y + yOffset, transform.position.z);
+		float ychange = transform.position.y;
+		if(trackingTarget.position.y >= 0f) ychange = trackingTarget.position.y + yOffset;
+		
+		transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
 	}
 }
