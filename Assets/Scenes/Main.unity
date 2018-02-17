@@ -1235,6 +1235,7 @@ MonoBehaviour:
   jumpHeight: 10
   jumpBox: 0.5
   respawn: {x: 0, y: 0}
+  mirror: {fileID: 1896107196}
 --- !u!61 &1396466610
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1797,6 +1798,7 @@ MonoBehaviour:
   jumpHeight: 10
   jumpBox: 0.5
   respawn: {x: 0, y: 0}
+  mirror: {fileID: 1396466609}
 --- !u!1 &2044872968
 GameObject:
   m_ObjectHideFlags: 0

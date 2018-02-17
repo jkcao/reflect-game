@@ -11,6 +11,8 @@ abstract public class Player : MonoBehaviour {
 	protected bool isGrounded;
 	public Vector2 respawn;
 
+	public Player mirror;
+
 	// Use this for initialization
 	void Start () {
 		rigidBody = GetComponent<Rigidbody2D> ();
@@ -20,8 +22,8 @@ abstract public class Player : MonoBehaviour {
 
 	protected void OnCollisionEnter2D (Collision2D col){
 		if (col.gameObject.tag == "Death") {
-			GameObject.Find("Character").transform.position = GameObject.Find("Character").GetComponent<Character>().respawn;
-			GameObject.Find("Reflection").transform.position = GameObject.Find("Reflection").GetComponent<Reflection>().respawn;
+			transform.position = respawn;
+			mirror.transform.position = mirror.GetComponent<Player>().respawn;
 		}
 	}
 
