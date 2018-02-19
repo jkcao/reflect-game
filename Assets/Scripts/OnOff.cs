@@ -5,7 +5,8 @@ using UnityEngine;
 abstract public class OnOff : MonoBehaviour {
 
 	protected bool turnOn;
-	protected bool playerCol;
+	protected bool cCol;
+	protected bool rCol;
 	protected SpriteRenderer aSwitch;
 	protected Color color1;
 	protected Color color2;
@@ -13,34 +14,44 @@ abstract public class OnOff : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		turnOn = false;
-		playerCol = false;
+		cCol = false;
+		rCol = false;
 		aSwitch = GetComponent<SpriteRenderer>();
 		color1 = aSwitch.material.GetColor("_EmissionColor");
 		color2 = Color.blue;
 		begin ();
 	}
 
+	// Checks if the player is in-contact with an OnOff object or not.
 	protected void OnTriggerStay2D (Collider2D col){
-		if (col.gameObject.tag == "Player") {
-			playerCol = true;
+		if (col.gameObject.tag == "Character") {
+			cCol = true;
+		}
+		if (col.gameObject.tag == "Reflection") {
+			rCol = true;
 		}
 	}
 		
 	protected void OnTriggerExit2D (Collider2D col){
-		if (col.gameObject.tag == "Player") {
-			playerCol = false;
+		if (col.gameObject.tag == "Character") {
+			cCol = false;
+		}
+		if (col.gameObject.tag == "Reflection") {
+			rCol = false;
 		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if(playerCol && Input.GetKeyDown("m")) {
+		// If the player is on the object and toggles it, turn the object On/Off.
+		if((cCol && Input.GetKeyDown("j")) || (rCol && Input.GetKeyDown("l"))) {
 			turnOn = !turnOn;
 			changeVisual (turnOn);
 			action (turnOn);
 		}
 	}
-		
+
+	// This can later be replaced to a sprite change.
 	protected void changeVisual(bool turnOn) {
 		if(turnOn) {
 			aSwitch.material.SetColor ("_EmissionColor", color2);
@@ -49,6 +60,22 @@ abstract public class OnOff : MonoBehaviour {
 		}
 	}
 
+	// Function to pass the on/off bool to other scripts.
+	public bool getOnBool(){
+		return turnOn;
+	}
+
+	// Function to set the on/off bool from other scripts and perform the neseccary changes.
+	public void setOnBool(bool x){
+		if (turnOn != x) {
+			turnOn = !turnOn;
+			changeVisual (turnOn);
+			action (turnOn);
+		}
+	}
+
+	// These are abstract methods so each type of object can perform the action it's supposed to.
+	// And initialize in the way they need to.
 	protected abstract void action (bool turnOn);
 	protected abstract void begin ();
 }
