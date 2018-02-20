@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 abstract public class OnOff : MonoBehaviour {
-
+	
 	protected bool turnOn;
 	protected bool cCol;
 	protected bool rCol;
-	protected SpriteRenderer aSwitch;
+	protected SpriteRenderer switchVisual;
 	protected Color color1;
 	protected Color color2;
 
@@ -16,8 +16,8 @@ abstract public class OnOff : MonoBehaviour {
 		turnOn = false;
 		cCol = false;
 		rCol = false;
-		aSwitch = GetComponent<SpriteRenderer>();
-		color1 = aSwitch.material.GetColor("_EmissionColor");
+		switchVisual = GetComponent<SpriteRenderer>();
+		color1 = switchVisual.material.GetColor("_EmissionColor");
 		color2 = Color.blue;
 		begin ();
 	}
@@ -45,18 +45,16 @@ abstract public class OnOff : MonoBehaviour {
 	void Update () {
 		// If the player is on the object and toggles it, turn the object On/Off.
 		if((cCol && Input.GetKeyDown("j")) || (rCol && Input.GetKeyDown("l"))) {
-			turnOn = !turnOn;
-			changeVisual (turnOn);
-			action (turnOn);
+			setOnBool(!turnOn);
 		}
 	}
 
 	// This can later be replaced to a sprite change.
 	protected void changeVisual(bool turnOn) {
 		if(turnOn) {
-			aSwitch.material.SetColor ("_EmissionColor", color2);
+			switchVisual.material.SetColor ("_EmissionColor", color2);
 		} else {
-			aSwitch.material.SetColor ("_EmissionColor", color1);
+			switchVisual.material.SetColor ("_EmissionColor", color1);
 		}
 	}
 
@@ -68,14 +66,14 @@ abstract public class OnOff : MonoBehaviour {
 	// Function to set the on/off bool from other scripts and perform the neseccary changes.
 	public void setOnBool(bool x){
 		if (turnOn != x) {
-			turnOn = !turnOn;
+			turnOn = x;
 			changeVisual (turnOn);
 			action (turnOn);
 		}
 	}
 
-	// These are abstract methods so each type of object can perform the action it's supposed to.
-	// And initialize in the way they need to.
+	// These are abstract methods so each type of object can perform the action it's supposed to,
+	// and initialize in the way they need to.
 	protected abstract void action (bool turnOn);
 	protected abstract void begin ();
 }
