@@ -6,11 +6,19 @@ public class TimedOnOff : MonoBehaviour {
 
 	// Generalize to if we want a timer for how long something is on or how long it's off.
 	public bool timeOn;
-	public int timer;
+	public float timer;
 
+	// Run a timer, which resets if the button gets turned off before its through.
 	IEnumerator Time() {
-		yield return new WaitForSeconds(timer);
-		this.GetComponent<OnOff> ().setOnBool (!timeOn);
+		float timeLeft = timer;
+		while (timeLeft > 0) {
+			if (this.GetComponent<OnOff> ().getOnBool () != timeOn)
+				break;
+			yield return new WaitForSeconds (1);
+			timeLeft--;
+		}
+		if (timeLeft == 0) this.GetComponent<OnOff> ().setOnBool (!timeOn);
+		StopAllCoroutines ();
 	}
 
 	// Update is called once per frame
@@ -18,6 +26,5 @@ public class TimedOnOff : MonoBehaviour {
 		if (this.GetComponent<OnOff> ().getOnBool () == timeOn) {
 			StartCoroutine (Time());
 		}
-
 	}
 }
