@@ -29,8 +29,9 @@ abstract public class Player : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+ 
 		// Check if player is grounded, via three points: its center and its two corners.
-		float end = jumpBox * 1.4f;
+		float end = jumpBox * 10f;
 		Vector2 leftCheck = new Vector2(transform.position.x - jumpBox, transform.position.y);
 		Vector2 rightCheck = new Vector2(transform.position.x + jumpBox, transform.position.y);
 		Vector2 midCheck = transform.position;
@@ -49,7 +50,7 @@ abstract public class Player : MonoBehaviour {
 			isGrounded = false;
 		}
 
-		float horizontal = Input.GetAxis("Horizontal");
+        float horizontal = Input.GetAxis("Horizontal");
 
 		// Call Movement function.
 		Movement (horizontal, Input.GetKeyDown ("k"));
