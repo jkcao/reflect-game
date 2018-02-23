@@ -25,6 +25,15 @@ abstract public class Player : MonoBehaviour {
 			transform.position = respawn;
 			mirror.transform.position = mirror.GetComponent<Player>().respawn;
 		}
+		if (col.transform.tag == "MovingPlatform") {
+			transform.parent = col.transform;
+		}
+	}
+
+	protected void OnCollisionExit2D (Collision2D col) {
+		if (col.transform.tag == "MovingPlatform") {
+			transform.parent = null;
+		}
 	}
 
 	// Update is called once per frame
