@@ -37,9 +37,6 @@ abstract public class Player : MonoBehaviour {
 		if (col.transform.tag == "MovingPlatform") {
 			transform.parent = null;
 		}
-	}
-
-	protected void OnCollisionExit2D (Collision2D col){
 		if (col.gameObject.tag == "Ground") {
 			groundPosition = this.transform.position.y - halfHeight;
 		}
