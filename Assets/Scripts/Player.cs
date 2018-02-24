@@ -23,7 +23,7 @@ abstract public class Player : MonoBehaviour {
 	protected void OnCollisionEnter2D (Collision2D col){
 		if (col.gameObject.tag == "Death") {
 			transform.position = respawn;
-			mirror.transform.position = mirror.GetComponent<Player>().respawn;
+			mirror.transform.position = mirror.respawn;
 		}
 	}
 
