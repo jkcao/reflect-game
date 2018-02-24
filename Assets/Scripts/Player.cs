@@ -9,6 +9,8 @@ abstract public class Player : MonoBehaviour {
 	public float jumpBox;
 	protected Rigidbody2D rigidBody;
 	protected bool isGrounded;
+	protected float groundPosition;
+	protected float halfHeight;
 	public Vector2 respawn;
 
 	public Player mirror;
@@ -18,6 +20,8 @@ abstract public class Player : MonoBehaviour {
 		rigidBody = GetComponent<Rigidbody2D> ();
 		isGrounded = true;
 		respawn = transform.position;
+		halfHeight = this.GetComponent<SpriteRenderer>().bounds.size.y / 2;
+		groundPosition = this.transform.position.y - halfHeight;
 	}
 
 	protected void OnCollisionEnter2D (Collision2D col){
@@ -32,6 +36,12 @@ abstract public class Player : MonoBehaviour {
 	protected void OnCollisionExit2D (Collision2D col) {
 		if (col.transform.tag == "MovingPlatform") {
 			transform.parent = null;
+		}
+	}
+
+	protected void OnCollisionExit2D (Collision2D col){
+		if (col.gameObject.tag == "Ground") {
+			groundPosition = this.transform.position.y - halfHeight;
 		}
 	}
 
@@ -58,6 +68,7 @@ abstract public class Player : MonoBehaviour {
 			isGrounded = true;
 		} else {
 			isGrounded = false;
+			// Calculate to keep for allocating mirror platform dynamically.
 		}
 
 		float horizontal = Input.GetAxis("Horizontal");
@@ -65,6 +76,12 @@ abstract public class Player : MonoBehaviour {
 		// Call Movement function.
 		Movement (horizontal, Input.GetKeyDown ("k"));
 	}
+
+	// Returns the y-position of the ground the player was last standing on.
+	public float getGroundPosition() {
+		return groundPosition;
+	}
+
 
 	protected abstract void Movement (float horizontal, bool jump);
 }
