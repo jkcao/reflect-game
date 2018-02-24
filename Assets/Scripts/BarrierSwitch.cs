@@ -8,6 +8,7 @@ public class BarrierSwitch : OnOff {
 
 	protected override void begin () {}
 
+	// Toggles barrier.
 	protected override void action(bool turnOn) {
 		if(turnOn) {
 			barrier.SetActive (false);
