@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Death
+  - MPlatform
+  - Ground
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
@@ -44,4 +47,10 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Midground
+    uniqueID: 2084971205
+    locked: 0
+  - name: Player
+    uniqueID: 1494554451
     locked: 0
