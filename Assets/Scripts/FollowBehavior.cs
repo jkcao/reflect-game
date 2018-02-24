@@ -17,7 +17,7 @@ public class FollowBehavior : MonoBehaviour {
 	void Update()
 	{
 		float ychange = transform.position.y;
-		if(trackingTarget.position.y >= 0f) ychange = trackingTarget.position.y + yOffset;
+		if(trackingTarget.position.y >= 0.5f) ychange = trackingTarget.position.y + yOffset;
 		
 		transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
 	}
