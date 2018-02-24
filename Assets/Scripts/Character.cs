@@ -7,7 +7,6 @@ public class Character : Player {
 		// Moves LR and jumps if input & able.
 		if (isGrounded && jump) {
             rigidBody.velocity = new Vector2(speed * horizontal, jumpHeight);
-
         } else {
 			rigidBody.velocity = new Vector2 (speed * horizontal, rigidBody.velocity.y);
 			isGrounded = false;

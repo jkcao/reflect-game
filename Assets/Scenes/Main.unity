@@ -1230,7 +1230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d42fa94f4534acf81bacf05f0caa17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 7
   jumpHeight: 30
   jumpBox: 1
   respawn: {x: 0, y: 0}
@@ -1792,7 +1792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed496f0869e47441a98bd2b966532f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 7
   jumpHeight: 30
   jumpBox: 0.5
   respawn: {x: 0, y: 0}

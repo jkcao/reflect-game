@@ -31,7 +31,7 @@ abstract public class Player : MonoBehaviour {
 	void Update () {
  
 		// Check if player is grounded, via three points: its center and its two corners.
-		float end = jumpBox * 10f;
+		float end = jumpBox * 1.4f;
 		Vector2 leftCheck = new Vector2(transform.position.x - jumpBox, transform.position.y);
 		Vector2 rightCheck = new Vector2(transform.position.x + jumpBox, transform.position.y);
 		Vector2 midCheck = transform.position;
