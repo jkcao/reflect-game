@@ -1234,6 +1234,8 @@ MonoBehaviour:
   jumpHeight: 30
   jumpBox: 1
   respawn: {x: 0, y: 0}
+  blockPrefab: {fileID: 1934056331129538, guid: 2c1f68537cf2b6b40b60486afb79caf7,
+    type: 2}
   mirror: {fileID: 1896107196}
 --- !u!61 &1396466610
 BoxCollider2D:
@@ -1796,6 +1798,8 @@ MonoBehaviour:
   jumpHeight: 30
   jumpBox: 0.5
   respawn: {x: 0, y: 0}
+  blockPrefab: {fileID: 1934056331129538, guid: 2c1f68537cf2b6b40b60486afb79caf7,
+    type: 2}
   mirror: {fileID: 1396466609}
 --- !u!1 &2044872968
 GameObject:

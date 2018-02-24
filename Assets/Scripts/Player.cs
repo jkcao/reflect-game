@@ -9,8 +9,9 @@ abstract public class Player : MonoBehaviour {
 	public float jumpBox;
 	protected Rigidbody2D rigidBody;
 	protected bool isGrounded;
+    protected int direction = 1;
 	public Vector2 respawn;
-
+    public GameObject blockPrefab;
 	public Player mirror;
 
 	// Use this for initialization
@@ -51,10 +52,23 @@ abstract public class Player : MonoBehaviour {
 		}
 
         float horizontal = Input.GetAxis("Horizontal");
+        if (Input.GetKeyDown("left") || Input.GetKeyDown("a"))
+        {
+            direction = -1;
+        }
+        if (Input.GetKeyDown("right") || Input.GetKeyDown("d"))
+        {
+            direction = 1;
+        }
 
+        if (Input.GetKeyDown("q"))
+        {
+            SpecialAbility(0, direction);
+        }
 		// Call Movement function.
 		Movement (horizontal, Input.GetKeyDown ("k"));
 	}
 
 	protected abstract void Movement (float horizontal, bool jump);
+    protected abstract void SpecialAbility(int condition, int dir);
 }
