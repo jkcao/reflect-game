@@ -20,7 +20,8 @@ abstract public class Player : MonoBehaviour {
 		rigidBody = GetComponent<Rigidbody2D> ();
 		isGrounded = true;
 		respawn = transform.position;
-		halfHeight = this.GetComponent<Collider>().bounds.size.y / 2;
+		halfHeight = this.GetComponent<SpriteRenderer>().bounds.size.y / 2;
+		groundPosition = this.transform.position.y - halfHeight;
 	}
 
 	protected void OnCollisionEnter2D (Collision2D col){

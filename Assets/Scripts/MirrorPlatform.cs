@@ -3,37 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MirrorPlatform : MonoBehaviour {
-
-	private float toGround;
+	
+	private float allocatedHeight;
 	private GameObject allocated;
 	
-	// Use this for initialization
+	// Use this for initialization.
 	void Start () {
-		toGround = Physics2D.Raycast (this.gameObject.transform.position, Vector2.down).distance;
-		Debug.Log (toGround);
+		allocatedHeight = this.transform.position.y;
+
 		allocated = null;
 	}
 
+	// When in-contact with the player, dynamically allocate the mirrored platform.
 	protected void OnCollisionEnter2D (Collision2D col){
 		if (col.gameObject.tag == "Player") {
 			Player p = col.gameObject.GetComponent<Player>();
-			Vector3 mirrored = new Vector3(-(this.transform.position.x - p.transform.position.x) + p.mirror.transform.position.x,
-											p.mirror.getGroundPosition() + toGround, this.transform.position.z);
+			// Finding position mirrored should go to.
+			Vector2 mirrored = new Vector2(-(transform.position.x - p.transform.position.x) + p.mirror.transform.position.x,
+											p.mirror.getGroundPosition() - p.getGroundPosition() + allocatedHeight);
+
+			//Making the new platform.
 			allocated = Instantiate (this.gameObject);
+			//Don't want infinitely spawning platforms!
 			Destroy(allocated.GetComponent<MirrorPlatform>());
+			Destroy(allocated.GetComponent<SpriteRenderer>());
 			allocated.transform.position = mirrored;
 		}
 	}
 
+	// Destroy the mirrored platform on exit.
 	protected void OnCollisionExit2D (Collision2D col){
 		if (col.gameObject.tag == "Player") {
 			Destroy (allocated);
 			allocated = null;
 		}
-	}
-
-	// Update is called once per frame
-	void Update () {
-		
 	}
 }
