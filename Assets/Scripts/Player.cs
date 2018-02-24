@@ -26,8 +26,16 @@ abstract public class Player : MonoBehaviour {
 
 	protected void OnCollisionEnter2D (Collision2D col){
 		if (col.gameObject.tag == "Death") {
-			transform.position = respawn;
-			mirror.transform.position = mirror.respawn;
+			Application.LoadLevel(Application.loadedLevel);
+		}
+		if (col.transform.tag == "MovingPlatform") {
+			transform.parent = col.transform;
+		}
+	}
+
+	protected void OnCollisionExit2D (Collision2D col) {
+		if (col.transform.tag == "MovingPlatform") {
+			transform.parent = null;
 		}
 	}
 
@@ -39,6 +47,9 @@ abstract public class Player : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		// Reset level by player.
+		if(Input.GetKeyDown("space")) Application.LoadLevel(Application.loadedLevel);
+
 		// Check if player is grounded, via three points: its center and its two corners.
 		float end = jumpBox * 1.4f;
 		Vector2 leftCheck = new Vector2(transform.position.x - jumpBox, transform.position.y);
