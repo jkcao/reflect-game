@@ -24,6 +24,15 @@ abstract public class Player : MonoBehaviour {
 		if (col.gameObject.tag == "Death") {
 			Application.LoadLevel(Application.loadedLevel);
 		}
+		if (col.transform.tag == "MovingPlatform") {
+			transform.parent = col.transform;
+		}
+	}
+
+	protected void OnCollisionExit2D (Collision2D col) {
+		if (col.transform.tag == "MovingPlatform") {
+			transform.parent = null;
+		}
 	}
 
 	// Update is called once per frame
