@@ -71,7 +71,7 @@ abstract public class Player : MonoBehaviour {
 			// Calculate to keep for allocating mirror platform dynamically.
 		}
 
-		float horizontal = Input.GetAxis("Horizontal");
+        float horizontal = Input.GetAxis("Horizontal");
 
 		// Call Movement function.
 		Movement (horizontal, Input.GetKeyDown ("k"));
