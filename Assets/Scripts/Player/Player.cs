@@ -36,9 +36,7 @@ abstract public class Player : MonoBehaviour {
 	protected void OnCollisionExit2D (Collision2D col) {
 		if (col.transform.tag == "MovingPlatform") {
 			transform.parent = null;
-		}
-		if (col.gameObject.tag == "Ground") {
-			groundPosition = this.transform.position.y - halfHeight;
+			groundPosition = transform.position.y - halfHeight;
 		}
 	}
 
@@ -63,6 +61,7 @@ abstract public class Player : MonoBehaviour {
 			|| Physics2D.Linecast (rightCheck, rightEnd, 1 << LayerMask.NameToLayer ("Ground"))
 			|| Physics2D.Linecast (midCheck, midEnd, 1 << LayerMask.NameToLayer ("Ground"))) {
 			isGrounded = true;
+			groundPosition = transform.position.y - halfHeight;
 		} else {
 			isGrounded = false;
 			// Calculate to keep for allocating mirror platform dynamically.
