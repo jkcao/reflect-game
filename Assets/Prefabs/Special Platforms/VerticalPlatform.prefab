@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4465446062111890}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: StartPt (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4814082900883818}
   - component: {fileID: 114736151959971748}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: VerticalPlatform
   m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4473288579046904}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EndPt (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

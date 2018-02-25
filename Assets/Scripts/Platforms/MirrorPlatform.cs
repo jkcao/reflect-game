@@ -20,13 +20,13 @@ public class MirrorPlatform : MonoBehaviour {
 			Player p = col.gameObject.GetComponent<Player>();
 			// Finding position mirrored should go to.
 			Vector2 mirrored = new Vector2(-(transform.position.x - p.transform.position.x) + p.mirror.transform.position.x,
-											p.mirror.getGroundPosition() - p.getGroundPosition() + allocatedHeight);
+											p.mirror.getGroundPosition() - p.getGroundPosition() + allocatedHeight - 0.1f);
 
 			//Making the new platform.
 			allocated = Instantiate (this.gameObject);
 			//Don't want infinitely spawning platforms!
 			Destroy(allocated.GetComponent<MirrorPlatform>());
-			//Destroy(allocated.GetComponent<SpriteRenderer>());
+			Destroy(allocated.GetComponent<SpriteRenderer>());
 			allocated.transform.position = mirrored;
 		}
 	}

@@ -61,9 +61,9 @@ abstract public class Player : MonoBehaviour {
 			|| Physics2D.Linecast (rightCheck, rightEnd, 1 << LayerMask.NameToLayer ("Ground"))
 			|| Physics2D.Linecast (midCheck, midEnd, 1 << LayerMask.NameToLayer ("Ground"))) {
 			isGrounded = true;
-			groundPosition = transform.position.y - halfHeight;
 		} else {
 			isGrounded = false;
+			groundPosition = transform.position.y - halfHeight;
 			// Calculate to keep for allocating mirror platform dynamically.
 		}
 
