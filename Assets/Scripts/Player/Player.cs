@@ -23,7 +23,9 @@ abstract public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rigidBody = GetComponent<Rigidbody2D> ();
-        restrict = restrictedPlat.GetComponent<Block>();
+		if (restrict != null) {
+			restrict = restrictedPlat.GetComponent<Block> ();
+		}
 		isGrounded = true;
         isRestricted = false;
 		respawn = transform.position;
@@ -74,20 +76,6 @@ abstract public class Player : MonoBehaviour {
 			// Calculate to keep for allocating mirror platform dynamically.
 		}
 
-        //if (Physics2D.Linecast(leftCheck, leftEnd, 1 << LayerMask.NameToLayer("Restrict"))
-        //    || Physics2D.Linecast(rightCheck, rightEnd, 1 << LayerMask.NameToLayer("Restrict"))
-        //    || Physics2D.Linecast(midCheck, midEnd, 1 << LayerMask.NameToLayer("Restrict")))
-        //{
-        //    Debug.Log("sdfdsfdsf");
-        //    isRestricted = true;
-        //}
-        //else
-        //{
-        //    Debug.Log("not touching");
-        //    isRestricted = false;
-        //}
-
-
         if (Input.GetKeyDown("left") || Input.GetKeyDown("a"))
         {
             direction = -1;
@@ -103,7 +91,9 @@ abstract public class Player : MonoBehaviour {
         {
             SpecialAbility(0, direction);
         }
-        isRestricted = restrict.getRestricted();
+		if (restrict != null) {
+			isRestricted = restrict.getRestricted ();
+		}
 
         // Call Movement function.
         Movement (horizontal, (Input.GetKeyDown ("w") || Input.GetKeyDown ("k")));
