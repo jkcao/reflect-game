@@ -8,23 +8,30 @@ abstract public class Player : MonoBehaviour {
 	public float jumpHeight;
 	public float jumpBox;
 	protected Rigidbody2D rigidBody;
-	protected bool isGrounded;
-	protected float groundPosition;
+    protected bool isGrounded;
+    protected bool isRestricted;
+    protected int direction = 1;
+    protected float groundPosition;
 	protected float halfHeight;
-	public Vector2 respawn;
+    public GameObject blockPrefab;
+    public GameObject restrictedPlat;
+    private Block restrict;
+    public Vector2 respawn;
 
 	public Player mirror;
 
 	// Use this for initialization
 	void Start () {
 		rigidBody = GetComponent<Rigidbody2D> ();
+        restrict = restrictedPlat.GetComponent<Block>();
 		isGrounded = true;
+        isRestricted = false;
 		respawn = transform.position;
 		halfHeight = this.GetComponent<SpriteRenderer>().bounds.size.y / 2;
 		groundPosition = this.transform.position.y - halfHeight;
 	}
 
-	protected void OnCollisionEnter2D (Collision2D col){
+    protected void OnCollisionEnter2D (Collision2D col){
 		if (col.gameObject.tag == "Death") {
 			Application.LoadLevel(Application.loadedLevel);
 		}
@@ -38,7 +45,7 @@ abstract public class Player : MonoBehaviour {
 			transform.parent = null;
 			groundPosition = transform.position.y - halfHeight;
 		}
-	}
+    }
 
 	// Update is called once per frame
 	void Update () {
@@ -67,10 +74,39 @@ abstract public class Player : MonoBehaviour {
 			// Calculate to keep for allocating mirror platform dynamically.
 		}
 
-        float horizontal = Input.GetAxis("Horizontal");
+        //if (Physics2D.Linecast(leftCheck, leftEnd, 1 << LayerMask.NameToLayer("Restrict"))
+        //    || Physics2D.Linecast(rightCheck, rightEnd, 1 << LayerMask.NameToLayer("Restrict"))
+        //    || Physics2D.Linecast(midCheck, midEnd, 1 << LayerMask.NameToLayer("Restrict")))
+        //{
+        //    Debug.Log("sdfdsfdsf");
+        //    isRestricted = true;
+        //}
+        //else
+        //{
+        //    Debug.Log("not touching");
+        //    isRestricted = false;
+        //}
 
-		// Call Movement function.
-		Movement (horizontal, (Input.GetKeyDown ("w") || Input.GetKeyDown ("k")));
+
+        if (Input.GetKeyDown("left") || Input.GetKeyDown("a"))
+        {
+            direction = -1;
+        }
+        if (Input.GetKeyDown("right") || Input.GetKeyDown("d"))
+        {
+            direction = 1;
+        }
+
+        float horizontal = Input.GetAxis("Horizontal");
+        
+        if (Input.GetKeyDown("q"))
+        {
+            SpecialAbility(0, direction);
+        }
+        isRestricted = restrict.getRestricted();
+
+        // Call Movement function.
+        Movement (horizontal, (Input.GetKeyDown ("w") || Input.GetKeyDown ("k")));
 	}
 
 	// Returns the y-position of the ground the player was last standing on.
@@ -78,6 +114,6 @@ abstract public class Player : MonoBehaviour {
 		return groundPosition;
 	}
 
-
 	protected abstract void Movement (float horizontal, bool jump);
+    protected abstract void SpecialAbility(int condition, int dir);
 }

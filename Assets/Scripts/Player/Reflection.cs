@@ -12,4 +12,13 @@ public class Reflection : Player {
 			isGrounded = false;
 		}
 	}
+
+    protected override void SpecialAbility(int condition, int dir)
+    {
+        if (condition == 0 && isRestricted)
+        {
+            GameObject block = (GameObject)Instantiate(blockPrefab);
+            block.GetComponent<Transform>().position = new Vector2(transform.position.x + (dir * -1 * 1.3f), transform.position.y);
+        }
+    }
 }
