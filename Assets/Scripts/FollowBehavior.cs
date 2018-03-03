@@ -34,13 +34,20 @@ public class FollowBehavior : MonoBehaviour {
 
 	bool gameStart = false;
 
+	void Start() {
+		
+		float ychange = transform.position.y;
+		if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
+		transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
+	}
+
 	// Update is called once per frame
 	void Update()
 	{
 		if (gameStart) {
 			float ychange = transform.position.y;
 			if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
-			
+
 			transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
 		} else {
 			print ("Camera is in level-showing mode");
