@@ -18,7 +18,7 @@ abstract public class OnOff : MonoBehaviour {
 		rCol = false;
 		switchVisual = GetComponent<SpriteRenderer>();
 		color1 = switchVisual.material.GetColor("_EmissionColor");
-		color2 = Color.blue;
+		color2 = Color.black;
 		begin ();
 	}
 

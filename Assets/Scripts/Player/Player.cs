@@ -70,7 +70,7 @@ abstract public class Player : MonoBehaviour {
         float horizontal = Input.GetAxis("Horizontal");
 
 		// Call Movement function.
-		Movement (horizontal, Input.GetKeyDown ("k"));
+		Movement (horizontal, (Input.GetKeyDown ("w") || Input.GetKeyDown ("k")));
 	}
 
 	// Returns the y-position of the ground the player was last standing on.
