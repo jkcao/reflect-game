@@ -5,8 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Death
-  - MPlatform
-  - Ground
   - MovingPlatform
   - Character
   - Reflection
@@ -47,7 +45,13 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 1422021335
+    locked: 0
   - name: Midground
+    uniqueID: 539188805
+    locked: 0
+  - name: Interactable
     uniqueID: 2084971205
     locked: 0
   - name: Player
