@@ -30,17 +30,20 @@ public class FollowBehavior : MonoBehaviour {
 	 * When input key press = "+", move the cameras to the right
 	 * Jump key would reset the camera position
 	 * 
-	 * 
-	 * 
-	 * 
-	 * /
+	 */
+
+	bool gameStart = false;
 
 	// Update is called once per frame
 	void Update()
 	{
-		float ychange = transform.position.y;
-		if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
-		
-		transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
+		if (gameStart) {
+			float ychange = transform.position.y;
+			if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
+			
+			transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
+		} else {
+			print ("Camera is in level-showing mode");
+		}
 	}
 }
