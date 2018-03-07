@@ -7,15 +7,15 @@ abstract public class Player : MonoBehaviour {
 	public float speed;
 	public float jumpHeight;
 	public float jumpBox;
+	public GameObject blockPrefab;
+	public GameObject restrictedPlat;
+
 	protected Rigidbody2D rigidBody;
     protected bool isGrounded;
-    protected bool isRestricted;
     protected int direction = 1;
     protected float groundPosition;
 	protected float halfHeight;
-    public GameObject blockPrefab;
-    public GameObject restrictedPlat;
-    private Block restrict;
+    protected Block restrict;
     public Vector2 respawn;
 
 	public Player mirror;
@@ -23,9 +23,8 @@ abstract public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rigidBody = GetComponent<Rigidbody2D> ();
-        restrict = restrictedPlat.GetComponent<Block>();
+		if (restrictedPlat != null) restrict = restrictedPlat.GetComponent<Block>();
 		isGrounded = true;
-        isRestricted = false;
 		respawn = transform.position;
 		halfHeight = this.GetComponent<SpriteRenderer>().bounds.size.y / 2;
 		groundPosition = this.transform.position.y - halfHeight;
@@ -74,36 +73,22 @@ abstract public class Player : MonoBehaviour {
 			// Calculate to keep for allocating mirror platform dynamically.
 		}
 
-        //if (Physics2D.Linecast(leftCheck, leftEnd, 1 << LayerMask.NameToLayer("Restrict"))
-        //    || Physics2D.Linecast(rightCheck, rightEnd, 1 << LayerMask.NameToLayer("Restrict"))
-        //    || Physics2D.Linecast(midCheck, midEnd, 1 << LayerMask.NameToLayer("Restrict")))
-        //{
-        //    Debug.Log("sdfdsfdsf");
-        //    isRestricted = true;
-        //}
-        //else
-        //{
-        //    Debug.Log("not touching");
-        //    isRestricted = false;
-        //}
-
-
-        if (Input.GetKeyDown("left") || Input.GetKeyDown("a"))
-        {
-            direction = -1;
-        }
-        if (Input.GetKeyDown("right") || Input.GetKeyDown("d"))
-        {
-            direction = 1;
-        }
-
         float horizontal = Input.GetAxis("Horizontal");
         
+		// Checking for reflection special ability.
         if (Input.GetKeyDown("q"))
-        {
+		{
+			// Find the dircetion to place block.
+			if (Input.GetKeyDown("left") || Input.GetKeyDown("a"))
+			{
+				direction = -1;
+			}
+			if (Input.GetKeyDown("right") || Input.GetKeyDown("d"))
+			{
+				direction = 1;
+			}
             SpecialAbility(0, direction);
         }
-        isRestricted = restrict.getRestricted();
 
         // Call Movement function.
         Movement (horizontal, (Input.GetKeyDown ("w") || Input.GetKeyDown ("k")));

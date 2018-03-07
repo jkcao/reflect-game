@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Reflection : Player {
+
 	protected override void Movement(float horizontal, bool jump) {
 		// Moves RL and jumps if input & able.
 		if (isGrounded && jump) {
@@ -15,7 +16,7 @@ public class Reflection : Player {
 
     protected override void SpecialAbility(int condition, int dir)
     {
-        if (condition == 0 && isRestricted)
+		if (condition == 0 && restrict.getRestricted() && blockPrefab != null)
         {
             GameObject block = (GameObject)Instantiate(blockPrefab);
             block.GetComponent<Transform>().position = new Vector2(transform.position.x + (dir * -1 * 1.3f), transform.position.y);
