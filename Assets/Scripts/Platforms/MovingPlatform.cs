@@ -9,6 +9,8 @@ public class MovingPlatform : MonoBehaviour {
 	public Transform currPt;
 	public Transform[] pts;	
 	public int ptSelection;
+	public bool isActive;
+
 	// Use this for initialization
 	void Start () {
 		currPt = pts [ptSelection];
@@ -16,13 +18,15 @@ public class MovingPlatform : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		platform.transform.position = Vector3.MoveTowards (platform.transform.position, currPt.position, Time.deltaTime * speed);
-		if (platform.transform.position == currPt.position) {
-			ptSelection++;
-			if (ptSelection == pts.Length) {
-				ptSelection = 0;
+		if (isActive) {
+			platform.transform.position = Vector3.MoveTowards (platform.transform.position, currPt.position, Time.deltaTime * speed);
+			if (platform.transform.position == currPt.position) {
+				ptSelection++;
+				if (ptSelection == pts.Length) {
+					ptSelection = 0;
+				}
+				currPt = pts [ptSelection];
 			}
-			currPt = pts [ptSelection];
 		}
 	}
 }
