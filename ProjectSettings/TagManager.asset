@@ -10,6 +10,7 @@ TagManager:
   - MovingPlatform
   - Character
   - Reflection
+  - Restrict
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - 
   - Ground
   - Restrict
-  - 
+  - Block
   - 
   - 
   - 
