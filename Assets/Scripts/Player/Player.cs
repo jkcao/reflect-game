@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 abstract public class Player : MonoBehaviour {
 
@@ -26,7 +27,7 @@ abstract public class Player : MonoBehaviour {
 
 	protected void OnCollisionEnter2D (Collision2D col){
 		if (col.gameObject.tag == "Death") {
-			Application.LoadLevel(Application.loadedLevel);
+			SceneManager.LoadScene (SceneManager.GetActiveScene().name);
 		}
 		if (col.transform.tag == "MovingPlatform") {
 			transform.parent = col.transform;
@@ -43,7 +44,7 @@ abstract public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// Reset level by player.
-		if(Input.GetKeyDown("space")) Application.LoadLevel(Application.loadedLevel);
+		if(Input.GetKeyDown("space")) SceneManager.LoadScene (SceneManager.GetActiveScene().name);
 
 		// Check if player is grounded, via three points: its center and its two corners.
 		float end = jumpBox * 1.4f;
