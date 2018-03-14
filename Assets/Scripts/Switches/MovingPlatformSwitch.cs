@@ -15,9 +15,9 @@ public class MovingPlatformSwitch : OnOff {
 
 	protected override void action(bool turnOn) {
 		if(turnOn) {
-			movingPlatform.isActive = isActiveOnStart;
-		} else {
 			movingPlatform.isActive = !isActiveOnStart;
+		} else {
+			movingPlatform.isActive = isActiveOnStart;
 		}
 	}
 }
