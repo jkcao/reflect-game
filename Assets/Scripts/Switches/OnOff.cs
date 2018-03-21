@@ -44,7 +44,7 @@ abstract public class OnOff : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// If the player is on the object and toggles it, turn the object On/Off.
-		if((cCol && Input.GetKeyDown("j")) || (rCol && Input.GetKeyDown("l"))) {
+		if((cCol && (Input.GetKeyDown("j") || Input.GetMouseButtonDown(0))) || (rCol && (Input.GetKeyDown("l") || Input.GetMouseButtonDown(0)))) {
 			setOnBool(!turnOn);
 		}
 	}

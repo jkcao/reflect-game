@@ -44,7 +44,7 @@ abstract public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// Reset level by player.
-		if(Input.GetKeyDown("space")) SceneManager.LoadScene (SceneManager.GetActiveScene().name);
+		if(Input.GetKeyDown("return")) SceneManager.LoadScene (SceneManager.GetActiveScene().name);
 
 		// Check if player is grounded, via three points: its center and its two corners.
 		float end = jumpBox * 1.4f;
@@ -71,7 +71,7 @@ abstract public class Player : MonoBehaviour {
         float horizontal = Input.GetAxis("Horizontal");
 
 		// Call Movement function.
-		Movement (horizontal, (Input.GetKeyDown ("w") || Input.GetKeyDown ("k")));
+		Movement (horizontal, (Input.GetKeyDown ("w") || Input.GetKeyDown("space") || Input.GetKeyDown ("k")));
 	}
 
 	// Returns the y-position of the ground the player was last standing on.
