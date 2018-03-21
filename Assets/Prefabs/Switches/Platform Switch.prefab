@@ -82,7 +82,7 @@ MonoBehaviour:
   platform2: {fileID: 0}
   platform3: {fileID: 0}
   platform4: {fileID: 0}
-  toggleSet: 0
+  toggleSet: 2
 --- !u!212 &212100034455949452
 SpriteRenderer:
   m_ObjectHideFlags: 1

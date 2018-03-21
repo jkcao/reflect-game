@@ -97,8 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c13a9140218974fcdae923baacf2bfd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackingTarget: {fileID: 4333506298003062, guid: 43298e119fbc44e1e953cf7841279d11,
-    type: 2}
+  trackingTarget: {fileID: 0}
   xOffset: 0
   yOffset: 0
 --- !u!124 &124324856137440284
