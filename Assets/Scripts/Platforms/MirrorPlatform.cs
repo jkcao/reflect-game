@@ -14,6 +14,14 @@ public class MirrorPlatform : MonoBehaviour {
 		allocated = null;
 	}
 
+	// Timer on sprite.
+	IEnumerator DestroySprite()
+	{
+		yield return new WaitForSeconds(0.25f);
+		Destroy(allocated.GetComponent<SpriteRenderer>());
+	}
+
+
 	// When in-contact with the player, dynamically allocate the mirrored platform.
 	protected void OnCollisionEnter2D (Collision2D col){
 		if (col.gameObject.tag == "Character" || col.gameObject.tag == "Reflection") {
@@ -26,8 +34,8 @@ public class MirrorPlatform : MonoBehaviour {
 			allocated = Instantiate (this.gameObject);
 			//Don't want infinitely spawning platforms!
 			Destroy(allocated.GetComponent<MirrorPlatform>());
-			Destroy(allocated.GetComponent<SpriteRenderer>());
 			allocated.transform.position = mirrored;
+			StartCoroutine(DestroySprite());
 		}
 	}
 
