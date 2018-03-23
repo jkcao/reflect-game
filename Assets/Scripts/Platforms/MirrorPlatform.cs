@@ -6,7 +6,8 @@ public class MirrorPlatform : MonoBehaviour {
 	
 	private float allocatedHeight;
 	private GameObject allocated;
-	
+	private Player collided;
+
 	// Use this for initialization.
 	void Start () {
 		allocatedHeight = this.transform.position.y;
@@ -24,11 +25,11 @@ public class MirrorPlatform : MonoBehaviour {
 	// When in-contact with the player, dynamically allocate the mirrored platform.
 	protected void OnCollisionEnter2D (Collision2D col){
 		if (col.gameObject.tag == "Character" || col.gameObject.tag == "Reflection") {
-			Player p = col.gameObject.GetComponent<Player> ();
+			collided = col.gameObject.GetComponent<Player> ();
 
 			// Finding position mirrored should go to.
-			Vector2 mirrored = new Vector2(-(transform.position.x - p.transform.position.x) + p.mirror.transform.position.x,
-				p.mirror.getGroundPosition() - p.getGroundPosition() + allocatedHeight);
+			Vector2 mirrored = new Vector2(-(transform.position.x - collided.transform.position.x) + collided.mirror.transform.position.x,
+				collided.mirror.getGroundPosition() - collided.getGroundPosition() + allocatedHeight);
 
 			//Making the new platform.
 			allocated = Instantiate (this.gameObject);
@@ -43,23 +44,23 @@ public class MirrorPlatform : MonoBehaviour {
 
 	//Adjust the mirror platform position if necessary.
 	protected void OnCollisionStay2D (Collision2D col){
-		if (col.gameObject.tag == "Character" || col.gameObject.tag == "Reflection") {
-			if (Input.GetKeyDown("a") || Input.GetKeyDown("d") || Input.GetKeyDown("left") || Input.GetKeyDown("right")) {
+		if ((col.gameObject.tag == "Character" || col.gameObject.tag == "Reflection")
+			&& (Input.GetKeyDown("a") || Input.GetKeyDown("d"))) {
 
-				Destroy (allocated);
-
-				Player p = col.gameObject.GetComponent<Player> ();
-				Vector2 mirrored = new Vector2 (-(transform.position.x - p.transform.position.x) + p.mirror.transform.position.x,
-					                  p.mirror.getGroundPosition () - p.getGroundPosition () + allocatedHeight);
-
-				//Making the new platform.
-				allocated = Instantiate (this.gameObject);
-				//Don't want infinitely spawning platforms!
-				if (allocated != null) {
-					Destroy (allocated.GetComponent<MirrorPlatform> ());
-					Destroy (allocated.GetComponent<SpriteRenderer> ());
-					allocated.transform.position = mirrored;
-				}
+			if(collided == null) collided = col.gameObject.GetComponent<Player> ();
+				
+			Destroy (allocated);
+						
+			Vector2 mirrored = new Vector2 (-(transform.position.x - collided.transform.position.x) + collided.mirror.transform.position.x,
+						                  collided.mirror.getGroundPosition () - collided.getGroundPosition () + allocatedHeight);
+	
+			//Making the new platform.
+			allocated = Instantiate (this.gameObject);
+			//Don't want infinitely spawning platforms!
+			if (allocated != null) {
+				Destroy (allocated.GetComponent<MirrorPlatform> ());
+				Destroy (allocated.GetComponent<SpriteRenderer> ());
+				allocated.transform.position = mirrored;
 			}
 		}
 	}

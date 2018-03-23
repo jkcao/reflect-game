@@ -8,19 +8,16 @@ abstract public class Player : MonoBehaviour {
 	public float speed;
 	public float jumpHeight;
 	public float jumpBox;
+	public Player mirror;
 	protected Rigidbody2D rigidBody;
 	protected bool isGrounded;
 	protected float groundPosition;
 	protected float halfHeight;
-	public Vector2 respawn;
-
-	public Player mirror;
 
 	// Use this for initialization
 	void Start () {
 		rigidBody = GetComponent<Rigidbody2D> ();
 		isGrounded = true;
-		respawn = transform.position;
 		halfHeight = this.GetComponent<SpriteRenderer>().bounds.size.y / 2;
 		groundPosition = this.transform.position.y - halfHeight;
 	}
@@ -63,9 +60,9 @@ abstract public class Player : MonoBehaviour {
 			|| Physics2D.Linecast (midCheck, midEnd, 1 << LayerMask.NameToLayer ("Ground"))) {
 			isGrounded = true;
 		} else {
-			isGrounded = false;
-			groundPosition = transform.position.y - halfHeight;
 			// Calculate to keep for allocating mirror platform dynamically.
+			if(isGrounded) groundPosition = transform.position.y - halfHeight;
+			isGrounded = false;
 		}
 
         float horizontal = Input.GetAxis("Horizontal");

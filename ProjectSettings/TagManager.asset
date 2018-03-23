@@ -8,6 +8,7 @@ TagManager:
   - MovingPlatform
   - Character
   - Reflection
+  - MPlatform
   layers:
   - Default
   - TransparentFX
@@ -51,12 +52,12 @@ TagManager:
   - name: Midground
     uniqueID: 539188805
     locked: 0
-  - name: Platforms
-    uniqueID: 60459525
-    locked: 0
   - name: Interactable
     uniqueID: 2084971205
     locked: 0
   - name: Player
     uniqueID: 1494554451
+    locked: 0
+  - name: Platforms
+    uniqueID: 60459525
     locked: 0
