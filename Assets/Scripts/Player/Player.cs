@@ -61,7 +61,7 @@ abstract public class Player : MonoBehaviour {
 			isGrounded = true;
 		} else {
 			// Calculate to keep for allocating mirror platform dynamically.
-			if(isGrounded) groundPosition = transform.position.y - halfHeight;
+			groundPosition = transform.position.y - halfHeight;
 			isGrounded = false;
 		}
 
