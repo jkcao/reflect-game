@@ -42,7 +42,8 @@ public class FollowBehavior : MonoBehaviour {
 		transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
 
 		// After Camera Panning, resume game
-		gameStart = true;
+		//gameStart = true;
+		print("Start loop");
 	}
 
 	// Update is called once per frame
