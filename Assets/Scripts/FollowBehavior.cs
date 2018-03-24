@@ -13,6 +13,9 @@ public class FollowBehavior : MonoBehaviour {
 	[SerializeField]
 	float yOffset;
 
+	[SerializeField]
+	float cameraSpeed = 1; // TODO: Inverse for right camera
+
 	/* Pre-Level Start: Camera moves up slowly until the topmost platform is visible, and slowly moves down
 	 * 
 	 * Camera Properties: 
@@ -55,14 +58,14 @@ public class FollowBehavior : MonoBehaviour {
 		// Pan Right
 		if(Input.GetKey(KeyCode.Semicolon))
 		{
-			transform.position = new Vector3(transform.position.x + 2, transform.position.y, transform.position.z);
+			transform.position = new Vector3(transform.position.x + cameraSpeed, transform.position.y, transform.position.z);
 			print ("Semicolon key pressed");
 		}
 
 		// Pan Left
 		if(Input.GetKey(KeyCode.Quote))
 		{
-			transform.position = new Vector3(transform.position.x - 2, transform.position.y, transform.position.z);
+			transform.position = new Vector3(transform.position.x - cameraSpeed, transform.position.y, transform.position.z);
 			print ("Quote key pressed");
 		}
 
