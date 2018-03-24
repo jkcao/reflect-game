@@ -40,7 +40,7 @@ public class FollowBehavior : MonoBehaviour {
 	* 
 	*/
 
-	bool gameStart = false;
+	bool gameStart;
 
 	void Start() {
 
@@ -48,6 +48,9 @@ public class FollowBehavior : MonoBehaviour {
 		float ychange = transform.position.y;
 		if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
 		transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
+
+		// GameStart false at the start
+		gameStart = false;
 
 		// After Camera Panning, resume game
 		//gameStart = true;
@@ -57,6 +60,8 @@ public class FollowBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
+		// Properties / Vars
+		float ychange = transform.position.y;
 
 		// Camera Panning --
 
