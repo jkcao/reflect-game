@@ -82,7 +82,7 @@ public class FollowBehavior : MonoBehaviour {
 
 			transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
 		} else {
-			print ("Camera is in level-showing mode");
+			print ("Camera is in level-exploring mode");
 		}
 	}
 }
