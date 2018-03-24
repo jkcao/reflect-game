@@ -25,12 +25,12 @@ public class FollowBehavior : MonoBehaviour {
 	 */
 
 	/* Panning left + right: use "-" and "=" key respectively
-	 * 
-	 * When input key press = "-", move the cameras to the left
-	 * When input key press = "+", move the cameras to the right
-	 * Jump key would reset the camera position
-	 * 
-	 */
+	* 
+	* When input key press = "-", move the cameras to the left
+	* When input key press = "+", move the cameras to the right
+	* Jump key would reset the camera position
+	* 
+	*/
 
 	bool gameStart = false;
 
@@ -78,6 +78,8 @@ public class FollowBehavior : MonoBehaviour {
 			print ("Game Started!");
 			print ("Space key pressed - GameStart");
 		}
+
+
 
 		// Camera
 		if (gameStart) {
