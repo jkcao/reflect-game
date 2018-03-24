@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* Play using default keys
+ * Camera Panning: Use ; and " keys to pan left and right
+ * 
+ */
+
 public class FollowBehavior : MonoBehaviour {
 
 	[SerializeField]
@@ -58,6 +63,7 @@ public class FollowBehavior : MonoBehaviour {
 		// Pan Right
 		if(Input.GetKey(KeyCode.Semicolon))
 		{
+			gameStart = false;
 			transform.position = new Vector3(transform.position.x + cameraSpeed, transform.position.y, transform.position.z);
 			print ("Semicolon key pressed");
 		}
@@ -65,30 +71,54 @@ public class FollowBehavior : MonoBehaviour {
 		// Pan Left
 		if(Input.GetKey(KeyCode.Quote))
 		{
+			gameStart = false;
 			transform.position = new Vector3(transform.position.x - cameraSpeed, transform.position.y, transform.position.z);
 			print ("Quote key pressed");
 		}
 
-		// Game Start toggle by Pressing Space Key: Camera should start following user
-		if(Input.GetKey(KeyCode.Space))
+		// Zooming in and out
+		if(Input.GetKey(KeyCode.UpArrow))
 		{
-			gameStart = true;
-			float ychange = transform.position.y;
+			if (Camera.main.fieldOfView<=125)
+				Camera.main.fieldOfView +=2;
+			if (Camera.main.orthographicSize<=20)
+				Camera.main.orthographicSize +=0.5f;
+		}
+
+		if(Input.GetKey(KeyCode.DownArrow))
+		{
+			if (Camera.main.fieldOfView>2)
+				Camera.main.fieldOfView -=2;
+			if (Camera.main.orthographicSize>=1)
+				Camera.main.orthographicSize -=0.5f;
+		}
+
+		// Re-attach camera
+		if(Input.GetKey(KeyCode.LeftArrow))
+		{
+			ychange = transform.position.y;
 			if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
 
 			transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
-
-			print ("Game Started!");
-			print ("Space key pressed - GameStart");
+			gameStart = true;
+			print ("Left key pressed - Camera attached");
 		}
 
-
-
-		// Camera
-		if (gameStart) {
-			float ychange = transform.position.y;
+		if(Input.GetKey(KeyCode.RightArrow))
+		{
+			ychange = transform.position.y;
 			if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
 
+			transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
+			gameStart = true;
+			print ("Right key pressed - Camera attached");
+		}
+
+		// Camera
+		if (gameStart == true) {
+			
+			ychange = transform.position.y;
+			if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
 			transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
 		} else {
 			print ("Camera is in level-exploring mode");
