@@ -5,10 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Death
+  - MPlatform
+  - Ground
   - MovingPlatform
   - Character
   - Reflection
-  - MPlatform
+  - Restrict
   layers:
   - Default
   - TransparentFX
@@ -19,8 +21,8 @@ TagManager:
   - 
   - 
   - Ground
-  - 
-  - 
+  - Restrict
+  - Block
   - 
   - 
   - 
@@ -46,18 +48,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
-    uniqueID: 1422021335
-    locked: 0
   - name: Midground
-    uniqueID: 539188805
-    locked: 0
-  - name: Interactable
     uniqueID: 2084971205
     locked: 0
   - name: Player
     uniqueID: 1494554451
-    locked: 0
-  - name: Platforms
-    uniqueID: 60459525
     locked: 0
