@@ -49,6 +49,13 @@ public class FollowBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
+		// Pan Right
+		if(Input.GetKey(KeyCode.Semicolon))
+		{
+			transform.position = new Vector3(transform.position.x + 2, transform.position.y, transform.position.z);
+			print ("Semicolon key pressed");
+		}
+
 		if (gameStart) {
 			float ychange = transform.position.y;
 			if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
