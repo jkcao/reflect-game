@@ -49,6 +49,9 @@ public class FollowBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
+
+		// Camera Panning --
+
 		// Pan Right
 		if(Input.GetKey(KeyCode.Semicolon))
 		{
@@ -76,6 +79,7 @@ public class FollowBehavior : MonoBehaviour {
 			print ("Space key pressed - GameStart");
 		}
 
+		// Camera
 		if (gameStart) {
 			float ychange = transform.position.y;
 			if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
