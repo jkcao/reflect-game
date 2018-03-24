@@ -561,7 +561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342fd7a9449ec4e88ae7f8fb5f5884e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platform: {fileID: 0}
+  platform: {fileID: 1717557316389898, guid: 50de89ab772da480cbc002a129209269, type: 2}
   isActiveOnStart: 0
 --- !u!1 &429113426
 GameObject:
@@ -803,6 +803,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114476954822675924, guid: 5500ca38901cf4ef4b4116810995c1f4,
+        type: 2}
+      propertyPath: barrier
+      value: 
+      objectReference: {fileID: 1799839882111716, guid: 809cd72d9d64549dc838a06948759c32,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5500ca38901cf4ef4b4116810995c1f4, type: 2}
   m_IsPrefabParent: 0
