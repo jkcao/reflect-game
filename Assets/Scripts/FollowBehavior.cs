@@ -56,6 +56,13 @@ public class FollowBehavior : MonoBehaviour {
 			print ("Semicolon key pressed");
 		}
 
+		// Pan Left
+		if(Input.GetKey(KeyCode.Quote))
+		{
+			transform.position = new Vector3(transform.position.x - 2, transform.position.y, transform.position.z);
+			print ("Quote key pressed");
+		}
+
 		if (gameStart) {
 			float ychange = transform.position.y;
 			if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
