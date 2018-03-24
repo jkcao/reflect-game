@@ -66,7 +66,7 @@ public class FollowBehavior : MonoBehaviour {
 			print ("Quote key pressed");
 		}
 
-		// Game Start toggle by Pressing Space Key
+		// Game Start toggle by Pressing Space Key: Camera should start following user
 		if(Input.GetKey(KeyCode.Space))
 		{
 			gameStart = true;
