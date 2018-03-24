@@ -63,6 +63,19 @@ public class FollowBehavior : MonoBehaviour {
 			print ("Quote key pressed");
 		}
 
+		// Game Start toggle by Pressing Space Key
+		if(Input.GetKey(KeyCode.Space))
+		{
+			gameStart = true;
+			float ychange = transform.position.y;
+			if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
+
+			transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
+
+			print ("Game Started!");
+			print ("Space key pressed - GameStart");
+		}
+
 		if (gameStart) {
 			float ychange = transform.position.y;
 			if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
