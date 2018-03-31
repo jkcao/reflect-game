@@ -103,7 +103,10 @@ abstract public class Player : MonoBehaviour
 
     if (Physics2D.Linecast(leftCheck, leftEnd, 1 << LayerMask.NameToLayer("Ground"))
       || Physics2D.Linecast(rightCheck, rightEnd, 1 << LayerMask.NameToLayer("Ground"))
-      || Physics2D.Linecast(midCheck, midEnd, 1 << LayerMask.NameToLayer("Ground")))
+      || Physics2D.Linecast(midCheck, midEnd, 1 << LayerMask.NameToLayer("Ground"))
+	  || Physics2D.Linecast(leftCheck, leftEnd, 1 << LayerMask.NameToLayer("Block"))
+	  || Physics2D.Linecast(rightCheck, rightEnd, 1 << LayerMask.NameToLayer("Block"))
+	  || Physics2D.Linecast(midCheck, midEnd, 1 << LayerMask.NameToLayer("Block")))
     {
       isGrounded = true;
     }
