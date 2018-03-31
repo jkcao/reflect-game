@@ -165,10 +165,10 @@ public class FollowBehavior : MonoBehaviour {
 
 	// Reattaches camera and starts game
 	private void reattachCamera(float ychange) {
-		ychange = transform.position.y;
+		levelWalkthrough = false;
+		gameStart = true;
 		if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
 		transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
-		gameStart = true;
 	}
 
 
