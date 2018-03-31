@@ -92,10 +92,17 @@ public class FollowBehavior : MonoBehaviour {
 		// Zooming in and out
 		if(Input.GetKey(KeyCode.UpArrow))
 		{
-			if (Camera.main.fieldOfView<=125)
-				Camera.main.fieldOfView +=2;
-			if (Camera.main.orthographicSize<=20)
-				Camera.main.orthographicSize +=0.5f;
+			// Camera 1
+			if (Camera.allCameras[1].fieldOfView<=125)
+				Camera.allCameras[1].fieldOfView +=2;
+			if (Camera.allCameras[1].orthographicSize<=20)
+				Camera.allCameras[1].orthographicSize +=0.5f;
+
+			// Camera 1
+			if (Camera.allCameras[0].fieldOfView<=125)
+				Camera.allCameras[0].fieldOfView +=2;
+			if (Camera.allCameras[0].orthographicSize<=20)
+				Camera.allCameras[0].orthographicSize +=0.5f;
 		}
 
 		if(Input.GetKey(KeyCode.DownArrow))
