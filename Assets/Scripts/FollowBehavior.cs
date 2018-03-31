@@ -56,8 +56,16 @@ public class FollowBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-
+		// Properties - Setup
 		float ychange = transform.position.y;
+
+		// ----- Level Walkthrough ---- //
+		if (levelWalkthrough == true) {
+			speed = 3.0f;
+			float step = speed * Time.deltaTime;
+			Camera.main.transform.position = Vector3.MoveTowards (Camera.main.transform.position, finalPosition.position, step);
+			Camera.allCameras [1].transform.position = Vector3.MoveTowards (Camera.allCameras [1].transform.position, finalPosition.position, step);
+		}
 
 		// ----- Camera Panning ------ //
 
