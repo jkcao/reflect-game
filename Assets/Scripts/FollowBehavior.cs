@@ -67,17 +67,17 @@ public class FollowBehavior : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
 	{
-		// Properties / Vars
+
 		float ychange = transform.position.y;
 
-		// Camera Panning --
+		// ----- Camera Panning ------ //
 
 		// Pan Right
 		if(Input.GetKey(KeyCode.Semicolon))
 		{
 			gameStart = false;
 			transform.position = new Vector3(transform.position.x + cameraSpeed, transform.position.y, transform.position.z);
-			print ("Semicolon key pressed");
+			print ("Camera: Semicolon key pressed");
 		}
 
 		// Pan Left
@@ -85,10 +85,10 @@ public class FollowBehavior : MonoBehaviour {
 		{
 			gameStart = false;
 			transform.position = new Vector3(transform.position.x - cameraSpeed, transform.position.y, transform.position.z);
-			print ("Quote key pressed");
+			print ("Camera: Quote key pressed");
 		}
 
-		// -- Zooming in and out ---
+		// ---- Zooming in and out ---- //
 
 		// Zoom Out
 		if(Input.GetKey(KeyCode.UpArrow))
@@ -122,6 +122,8 @@ public class FollowBehavior : MonoBehaviour {
 				Camera.allCameras[0].orthographicSize -=0.5f;
 		}
 
+		// ----- Snaps Camera back to Player ------ //
+
 		// Re-attach camera
 		if(Input.GetKey(KeyCode.LeftArrow))
 		{
@@ -135,10 +137,9 @@ public class FollowBehavior : MonoBehaviour {
 			print ("Right key pressed - Camera attached");
 		}
 
-		// Camera
+		// ----- GameStart - ReAttach Camera ----- //
 		if (gameStart == true) {
 			reattachCamera (ychange);
-
 		} else {
 			//print ("Camera is in level-exploring mode");
 		}
