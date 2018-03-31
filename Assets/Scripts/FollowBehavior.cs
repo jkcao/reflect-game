@@ -70,19 +70,17 @@ public class FollowBehavior : MonoBehaviour {
 		// ----- Camera Panning ------ //
 
 		// Pan Right
-		if(Input.GetKey(KeyCode.Semicolon))
+		if(Input.GetKey(KeyCode.RightArrow))
 		{
 			gameStart = false;
 			transform.position = new Vector3(transform.position.x + cameraSpeed, transform.position.y, transform.position.z);
-			print ("Camera: Semicolon key pressed");
 		}
 
 		// Pan Left
-		if(Input.GetKey(KeyCode.Quote))
+		if(Input.GetKey(KeyCode.LeftArrow))
 		{
 			gameStart = false;
 			transform.position = new Vector3(transform.position.x - cameraSpeed, transform.position.y, transform.position.z);
-			print ("Camera: Quote key pressed");
 		}
 
 		// ---- Zooming in and out ---- //
@@ -120,13 +118,6 @@ public class FollowBehavior : MonoBehaviour {
 		}
 
 		// ----- Snaps Camera back to Player ------ //
-
-		// Left or Right Arrow
-		if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
-		{
-			reattachCamera (ychange);
-			print ("Camera attached");
-		}
 
 		// a, w or d key
 		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.D))
