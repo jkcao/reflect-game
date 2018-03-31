@@ -124,8 +124,8 @@ public class FollowBehavior : MonoBehaviour {
 
 		// ----- Snaps Camera back to Player ------ //
 
-		// Re-attach camera
-		if(Input.GetKey(KeyCode.LeftArrow))
+		// Left or Right Arrow
+		if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
 		{
 			reattachCamera (ychange);
 			print ("Left key pressed - Camera attached");
