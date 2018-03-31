@@ -29,6 +29,7 @@ public class FollowBehavior : MonoBehaviour {
 	/* Pre-Level Start: Camera moves up slowly until the topmost platform is visible, and slowly moves down	*/
 
 	bool gameStart;
+	bool levelWalkthrough;
 
 	void Start() {
 
