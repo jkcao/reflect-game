@@ -44,6 +44,14 @@ public class FollowBehavior : MonoBehaviour {
 
 	void Start() {
 
+		// Inverse for right camera
+		if (gameObject.name == "CCamera") {
+			print ("CCamera");
+		} else if (gameObject.name == "RCamera") {
+			cameraSpeed = -1 * cameraSpeed;
+			print ("RCamera");
+		}
+
 		// Initial Setup
 		float ychange = transform.position.y;
 		if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
