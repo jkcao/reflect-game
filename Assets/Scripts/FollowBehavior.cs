@@ -18,8 +18,8 @@ public class FollowBehavior : MonoBehaviour {
 	[SerializeField]
 	float yOffset;
 
-	[SerializeField]
-	float cameraSpeed = 1; // TODO: Inverse for right camera
+
+	float cameraSpeed = 0.5f;
 
 	/* Pre-Level Start: Camera moves up slowly until the topmost platform is visible, and slowly moves down
 	 * 
