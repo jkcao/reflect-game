@@ -61,7 +61,7 @@ public class FollowBehavior : MonoBehaviour {
 		gameStart = false;
 
 		// After Camera Panning, resume game
-		//gameStart = true;
+		gameStart = true;
 		print("Start loop");
 	}
 
