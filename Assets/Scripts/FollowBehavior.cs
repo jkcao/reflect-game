@@ -47,6 +47,7 @@ public class FollowBehavior : MonoBehaviour {
 
 		// GameStart false at the start
 		gameStart = false;
+		levelWalkthrough = true;
 
 		print ("Start Loop");
 		print (ychange);
