@@ -18,6 +18,7 @@ public class FollowBehavior : MonoBehaviour {
 	[SerializeField]
 	float yOffset;
 
+	// Panning Camera Speed (using ';' and '"' keys)
 	float cameraSpeed = 0.5f;
 
 	// Camera: Level Walkthrough Properties
@@ -25,6 +26,7 @@ public class FollowBehavior : MonoBehaviour {
 	public Transform finalPosition;
 	public float speed;
 
+	/* Pre-Level Start: Camera moves up slowly until the topmost platform is visible, and slowly moves down	*/
 
 	bool gameStart;
 
