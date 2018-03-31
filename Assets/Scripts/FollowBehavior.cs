@@ -137,4 +137,14 @@ public class FollowBehavior : MonoBehaviour {
 			//print ("Camera is in level-exploring mode");
 		}
 	}
+	// Reattaches camera and starts game
+	private void reattachCamera() {
+		ychange = transform.position.y;
+		if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
+
+		transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
+		gameStart = true;
+	}
+
+
 }
