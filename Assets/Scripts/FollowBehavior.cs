@@ -115,20 +115,14 @@ public class FollowBehavior : MonoBehaviour {
 
 		if(Input.GetKey(KeyCode.RightArrow))
 		{
-			ychange = transform.position.y;
-			if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
-
-			transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
-			gameStart = true;
+			reattachCamera ();
 			print ("Right key pressed - Camera attached");
 		}
 
 		// Camera
 		if (gameStart == true) {
-			
-			ychange = transform.position.y;
-			if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
-			transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
+			reattachCamera ();
+
 		} else {
 			//print ("Camera is in level-exploring mode");
 		}
