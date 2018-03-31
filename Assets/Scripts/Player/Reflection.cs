@@ -19,9 +19,9 @@ public class Reflection : Player
     }
   }
 
-  protected override void SpecialAbility(int condition)
+  protected override void SpecialAbility(int cond)
   {
-    if (condition == 0 && restrict.getRestricted() && blockPrefab != null)
+    if (cond == 0 && restrict.getRestricted() && blockPrefab != null)
     {
 
       //Make sure there's nothing already in front of you

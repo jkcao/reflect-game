@@ -20,6 +20,7 @@ abstract public class Player : MonoBehaviour
   protected float groundPosition;
   protected float halfHeight;
   protected Block restrict;
+  protected Break destroyAbility;
   public Vector2 respawn;
 
   public Player mirror;
@@ -29,6 +30,7 @@ abstract public class Player : MonoBehaviour
   {
     rigidBody = GetComponent<Rigidbody2D>();
     if (restrictedPlat != null) restrict = restrictedPlat.GetComponent<Block>();
+    if (blockPrefab != null) destroyAbility = blockPrefab.GetComponent<Break>();
     isGrounded = true;
     respawn = transform.position;
     halfHeight = this.GetComponent<SpriteRenderer>().bounds.size.y / 2;
@@ -103,7 +105,10 @@ abstract public class Player : MonoBehaviour
 
     if (Physics2D.Linecast(leftCheck, leftEnd, 1 << LayerMask.NameToLayer("Ground"))
       || Physics2D.Linecast(rightCheck, rightEnd, 1 << LayerMask.NameToLayer("Ground"))
-      || Physics2D.Linecast(midCheck, midEnd, 1 << LayerMask.NameToLayer("Ground")))
+      || Physics2D.Linecast(midCheck, midEnd, 1 << LayerMask.NameToLayer("Ground"))
+      || Physics2D.Linecast(leftCheck, leftEnd, 1 << LayerMask.NameToLayer("Block"))
+      || Physics2D.Linecast(rightCheck, rightEnd, 1 << LayerMask.NameToLayer("Block"))
+      || Physics2D.Linecast(midCheck, midEnd, 1 << LayerMask.NameToLayer("Block")))
     {
       isGrounded = true;
     }
@@ -129,6 +134,11 @@ abstract public class Player : MonoBehaviour
     if (Input.GetKeyDown("q"))
     {
       SpecialAbility(0);
+    }
+
+    if (Input.GetKeyDown("e"))
+    {
+      SpecialAbility(1);
     }
 
     // Call Movement function.
