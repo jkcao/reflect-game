@@ -42,8 +42,7 @@ public class FollowBehavior : MonoBehaviour {
 
 		// Initial Setup
 		float ychange = transform.position.y;
-		if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
-		transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
+		reattachCamera (ychange);
 
 		// GameStart false at the start
 		gameStart = false;
