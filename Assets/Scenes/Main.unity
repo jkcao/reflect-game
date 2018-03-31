@@ -843,6 +843,16 @@ Prefab:
       propertyPath: trackingTarget
       value: 
       objectReference: {fileID: 1896107192}
+    - target: {fileID: 20419103430756804, guid: 43f103205c91a42cba6a264fa5ca5967,
+        type: 2}
+      propertyPath: m_HDR
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114323088092026942, guid: 43f103205c91a42cba6a264fa5ca5967,
+        type: 2}
+      propertyPath: cameraSpeed
+      value: -0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 43f103205c91a42cba6a264fa5ca5967, type: 2}
   m_IsPrefabParent: 0
@@ -1358,6 +1368,16 @@ Prefab:
       propertyPath: trackingTarget
       value: 
       objectReference: {fileID: 1396466608}
+    - target: {fileID: 20865213574371946, guid: a248c8c61db3b4d4aa2fadb0c941d1e7,
+        type: 2}
+      propertyPath: m_OcclusionCulling
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114209890094424676, guid: a248c8c61db3b4d4aa2fadb0c941d1e7,
+        type: 2}
+      propertyPath: cameraSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a248c8c61db3b4d4aa2fadb0c941d1e7, type: 2}
   m_IsPrefabParent: 0
