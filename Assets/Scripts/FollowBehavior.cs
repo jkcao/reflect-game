@@ -173,5 +173,11 @@ public class FollowBehavior : MonoBehaviour {
 		gameStart = true;
 	}
 
+	// Showing level at the beginning
+
+	private void levelWalkthrough() {
+
+	}
+
 
 }
