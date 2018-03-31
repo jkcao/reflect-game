@@ -109,32 +109,33 @@ public class FollowBehavior : MonoBehaviour {
 		// Re-attach camera
 		if(Input.GetKey(KeyCode.LeftArrow))
 		{
-			reattachCamera ();
+			reattachCamera (ychange);
 			print ("Left key pressed - Camera attached");
 		}
 
 		if(Input.GetKey(KeyCode.RightArrow))
 		{
-			reattachCamera ();
+			reattachCamera (ychange);
 			print ("Right key pressed - Camera attached");
 		}
 
 		// Camera
 		if (gameStart == true) {
-			reattachCamera ();
+			reattachCamera (ychange);
 
 		} else {
 			//print ("Camera is in level-exploring mode");
 		}
 	}
 
+
+
 	// -- Helpers --
 
 	// Reattaches camera and starts game
-	private void reattachCamera() {
+	private void reattachCamera(float ychange) {
 		ychange = transform.position.y;
 		if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
-
 		transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
 		gameStart = true;
 	}
