@@ -134,7 +134,7 @@ public class FollowBehavior : MonoBehaviour {
 			if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
 			transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
 		} else {
-			print ("Camera is in level-exploring mode");
+			//print ("Camera is in level-exploring mode");
 		}
 	}
 }
