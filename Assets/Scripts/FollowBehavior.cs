@@ -20,24 +20,6 @@ public class FollowBehavior : MonoBehaviour {
 
 	float cameraSpeed = 0.5f;
 
-	/* Pre-Level Start: Camera moves up slowly until the topmost platform is visible, and slowly moves down
-	 * 
-	 * Camera Properties: 
-	 * - Maximum height to go up for showing the level
-	 * - Speed of camera moving up/down before
-	 * - Perhaps some sound/music to indicate that this is level-showing time
-	 * 
-	 * Then level starts normally
-	 * 
-	 */
-
-	/* Panning left + right: use "-" and "=" key respectively
-	* 
-	* When input key press = "-", move the cameras to the left
-	* When input key press = "+", move the cameras to the right
-	* Jump key would reset the camera position
-	* 
-	*/
 
 	bool gameStart;
 
