@@ -145,6 +145,12 @@ public class FollowBehavior : MonoBehaviour {
 			reattachCamera (ychange);
 			print ("Camera attached");
 		}
+
+		// left or right mouse key
+		if(Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1))
+		{
+			reattachCamera (ychange);
+			print ("Camera attached");
 		}
 
 		// ----- GameStart - ReAttach Camera ----- //
