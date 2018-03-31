@@ -107,10 +107,17 @@ public class FollowBehavior : MonoBehaviour {
 
 		if(Input.GetKey(KeyCode.DownArrow))
 		{
-			if (Camera.main.fieldOfView>2)
-				Camera.main.fieldOfView -=2;
-			if (Camera.main.orthographicSize>=1)
-				Camera.main.orthographicSize -=0.5f;
+			// Camera 2
+			if (Camera.allCameras[1].fieldOfView>2)
+				Camera.allCameras[1].fieldOfView -=2;
+			if (Camera.allCameras[1].orthographicSize>=1)
+				Camera.allCameras[1].orthographicSize -=0.5f;
+
+			// Camera 1
+			if (Camera.allCameras[0].fieldOfView>2)
+				Camera.allCameras[0].fieldOfView -=2;
+			if (Camera.allCameras[0].orthographicSize>=1)
+				Camera.allCameras[0].orthographicSize -=0.5f;
 		}
 
 		// Re-attach camera
