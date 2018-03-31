@@ -88,7 +88,9 @@ public class FollowBehavior : MonoBehaviour {
 			print ("Quote key pressed");
 		}
 
-		// Zooming in and out
+		// -- Zooming in and out ---
+
+		// Zoom Out
 		if(Input.GetKey(KeyCode.UpArrow))
 		{
 			// Camera 1
@@ -104,6 +106,7 @@ public class FollowBehavior : MonoBehaviour {
 				Camera.allCameras[0].orthographicSize +=0.5f;
 		}
 
+		// Zoom In
 		if(Input.GetKey(KeyCode.DownArrow))
 		{
 			// Camera 2
