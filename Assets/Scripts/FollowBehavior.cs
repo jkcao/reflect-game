@@ -20,6 +20,11 @@ public class FollowBehavior : MonoBehaviour {
 
 	float cameraSpeed = 0.5f;
 
+	// Camera: Level Walkthrough Properties
+	public Transform initialPosition;
+	public Transform finalPosition;
+	public float speed;
+
 
 	bool gameStart;
 
