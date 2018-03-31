@@ -59,9 +59,8 @@ public class FollowBehavior : MonoBehaviour {
 		// GameStart false at the start
 		gameStart = false;
 
-		// After Camera Panning, resume game
-		gameStart = true;
-		print("Start loop");
+		print ("Start Loop");
+		print (ychange);
 	}
 
 	// Update is called once per frame
@@ -156,6 +155,7 @@ public class FollowBehavior : MonoBehaviour {
 
 		if (gameStart == true) {
 			reattachCamera (ychange);
+			print (ychange);
 		} else {
 			//print ("Camera is in level-exploring mode");
 		}
