@@ -131,10 +131,13 @@ public class FollowBehavior : MonoBehaviour {
 			print ("Left key pressed - Camera attached");
 		}
 
-		if(Input.GetKey(KeyCode.RightArrow))
+		// a, w or d key
+		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.D))
 		{
 			reattachCamera (ychange);
 			print ("Right key pressed - Camera attached");
+			print ("Camera attached");
+		}
 		}
 
 		// ----- GameStart - ReAttach Camera ----- //
