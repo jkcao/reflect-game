@@ -13,7 +13,7 @@ public class Block : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Reflection")
+        if (other.gameObject.tag == "Character")
 		{
             isRestricted = true;
         }
@@ -21,7 +21,7 @@ public class Block : MonoBehaviour {
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Reflection")
+        if (other.gameObject.tag == "Character")
         {
             isRestricted = false;
         }

@@ -8,7 +8,7 @@ public class Break : MonoBehaviour {
 
   private void Update()
   {
-    if (Input.GetKeyDown("e"))
+    if (Input.GetKeyDown("l"))
     {
       BreakBlock();
     }
@@ -16,7 +16,7 @@ public class Break : MonoBehaviour {
 
   private void OnCollisionStay2D(Collision2D other)
   {
-    if (other.gameObject.tag == "Character")
+    if (other.gameObject.tag == "Reflection")
     {
       touchingChar = true;
     }
@@ -24,7 +24,7 @@ public class Break : MonoBehaviour {
 
   private void OnCollisionExit2D(Collision2D other)
   {
-    if (other.gameObject.tag == "Character")
+    if (other.gameObject.tag == "Reflection")
     {
       touchingChar = false;
     }

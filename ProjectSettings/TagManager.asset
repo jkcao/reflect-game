@@ -48,9 +48,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 4183803883
+    locked: 0
   - name: Midground
     uniqueID: 2084971205
     locked: 0
+  - name: Interactable
+    uniqueID: 3975597295
+    locked: 0
   - name: Player
     uniqueID: 1494554451
+    locked: 0
+  - name: Platform
+    uniqueID: 4069408567
     locked: 0
