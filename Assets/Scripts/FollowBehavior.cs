@@ -19,7 +19,7 @@ public class FollowBehavior : MonoBehaviour {
 	float yOffset;
 
 	// Panning Camera Speed (using ';' and '"' keys)
-	float cameraSpeed = 0.5f;
+	public float cameraSpeed;
 
 	// Camera: Level Walkthrough Properties
 	public Transform initialPosition;
@@ -59,13 +59,17 @@ public class FollowBehavior : MonoBehaviour {
 		// Properties - Setup
 		float ychange = transform.position.y;
 
+		/*
 		// ----- Level Walkthrough ---- //
 		if (levelWalkthrough == true) {
-			speed = 3.0f;
 			float step = speed * Time.deltaTime;
 			Camera.main.transform.position = Vector3.MoveTowards (Camera.main.transform.position, finalPosition.position, step);
 			Camera.allCameras [1].transform.position = Vector3.MoveTowards (Camera.allCameras [1].transform.position, finalPosition.position, step);
+			if (Camera.main.transform.position == finalPosition.position || Camera.allCameras [1].transform.position == finalPosition.position) {
+				reattachCamera (initialPosition.position.y);
+			}
 		}
+		*/
 
 		// ----- Camera Panning ------ //
 
@@ -123,30 +127,24 @@ public class FollowBehavior : MonoBehaviour {
 		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.D))
 		{
 			reattachCamera (ychange);
-			print ("Camera attached");
 		}
 
 		// space, j or l key
 		if(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.J) || Input.GetKey(KeyCode.L))
 		{
 			reattachCamera (ychange);
-			print ("Camera attached");
 		}
 
 		// left or right mouse key
 		if(Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1))
 		{
 			reattachCamera (ychange);
-			print ("Camera attached");
 		}
 
 		// ----- GameStart - ReAttach Camera ----- //
 
 		if (gameStart == true) {
 			reattachCamera (ychange);
-			print (ychange);
-		} else {
-			//print ("Camera is in level-exploring mode");
 		}
 	}
 

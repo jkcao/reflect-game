@@ -8,9 +8,12 @@ public class Break : MonoBehaviour {
 
   private void Update()
   {
-    if (Input.GetKeyDown("l"))
+	if (Input.GetKeyDown("l") || Input.GetMouseButtonDown(1))
     {
-      BreakBlock();
+		if (touchingChar)
+		{
+			Destroy(gameObject);
+		}
     }
   }
 
@@ -29,13 +32,4 @@ public class Break : MonoBehaviour {
       touchingChar = false;
     }
   }
-
-  public void BreakBlock()
-  {
-    if (touchingChar)
-    {
-      Destroy(gameObject);
-    }
-  }
-
 }

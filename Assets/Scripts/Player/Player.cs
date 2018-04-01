@@ -129,7 +129,7 @@ abstract public class Player : MonoBehaviour
       dir = 1;
     }
     // Checking for reflection special ability.
-    if (Input.GetKeyDown("q"))
+		if (Input.GetKeyDown("j") || Input.GetMouseButtonDown(0))
     {
       SpecialAbility(0);
     }

@@ -108,6 +108,10 @@ MonoBehaviour:
   trackingTarget: {fileID: 0}
   xOffset: 0
   yOffset: 0
+  cameraSpeed: 0.2
+  initialPosition: {fileID: 0}
+  finalPosition: {fileID: 0}
+  speed: 0
 --- !u!124 &124217881950850414
 Behaviour:
   m_ObjectHideFlags: 1

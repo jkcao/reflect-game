@@ -22,12 +22,11 @@ public class Character : Player
   {
 		if (condition == 0 && restrict.getRestricted() && blockPrefab != null)
 		{
-
 			//Make sure there's nothing already in front of you
 			if ((dir == -1 && !hitRight) || (dir == 1 && !hitLeft))
 			{
 				GameObject block = (GameObject)Instantiate(blockPrefab);
-				block.GetComponent<Transform>().position = new Vector2(transform.position.x + (dir * -1 * 1.3f), transform.position.y + 0.75f);
+				block.GetComponent<Transform>().position = new Vector2(transform.position.x + (dir * 2f), transform.position.y + 1f);
 			}
 		}
   }

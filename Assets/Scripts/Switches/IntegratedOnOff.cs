@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IntegratedOnOff : OnOff {
 
-	// same determines if the two switches shoudl always have the same or opposite states.
+	// same determines if the two switches should always have the same or opposite states.
 	public OnOff other;
 	public bool same;
 

@@ -63,7 +63,7 @@ abstract public class OnOff : MonoBehaviour {
 		return turnOn;
 	}
 
-	// Function to set the on/off bool from other scripts and perform the neseccary changes.
+	// Function to set the on/off bool from other scripts and perform the necessary changes.
 	public void setOnBool(bool x){
 		if (turnOn != x) {
 			turnOn = x;
