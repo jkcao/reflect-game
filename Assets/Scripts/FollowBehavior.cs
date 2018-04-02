@@ -25,20 +25,18 @@ public class FollowBehavior : MonoBehaviour {
 	public Transform initialPosition;
 	public Transform finalPosition;
 	public float speed;
+	public Color backgroundColor;
 
 	/* Pre-Level Start: Camera moves up slowly until the topmost platform is visible, and slowly moves down	*/
 
-	bool gameStart;
-	bool levelWalkthrough;
+	private bool gameStart;
+	private bool levelWalkthrough;
 
 	void Start() {
 
 		// Inverse for right camera
-		if (gameObject.name == "CCamera") {
-			print ("CCamera");
-		} else if (gameObject.name == "RCamera") {
+		if (gameObject.name == "RCamera") {
 			cameraSpeed = -1 * cameraSpeed;
-			print ("RCamera");
 		}
 
 		// Initial Setup
@@ -47,10 +45,10 @@ public class FollowBehavior : MonoBehaviour {
 
 		// GameStart false at the start
 		gameStart = false;
-		levelWalkthrough = true;
+		levelWalkthrough = false;
 
-		print ("Start Loop");
-		print (ychange);
+		this.backgroundColor = backgroundColor;
+
 	}
 
 	// Update is called once per frame

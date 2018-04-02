@@ -52,7 +52,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.11672794, g: 0.119944856, b: 0.125, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0.503
@@ -104,6 +104,7 @@ MonoBehaviour:
   initialPosition: {fileID: 0}
   finalPosition: {fileID: 0}
   speed: 0
+  backgroundColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!124 &124324856137440284
 Behaviour:
   m_ObjectHideFlags: 1

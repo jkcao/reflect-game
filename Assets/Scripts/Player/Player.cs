@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 abstract public class Player : MonoBehaviour
 {
@@ -39,7 +40,7 @@ abstract public class Player : MonoBehaviour
   {
     if (col.gameObject.tag == "Death")
     {
-      Application.LoadLevel(Application.loadedLevel);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     if (col.transform.tag == "MovingPlatform")
     {
@@ -60,25 +61,24 @@ abstract public class Player : MonoBehaviour
   void Update()
   {
     // Reset level by player.
-    if (Input.GetKeyDown("space")) Application.LoadLevel(Application.loadedLevel);
+	if (Input.GetKeyDown("space")) 	SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
     // Check if player is grounded, via three points: its center and its two corners.
-    float end = jumpBox * 1.4f;
     Vector2 leftCheck = new Vector2(transform.position.x - jumpBox, transform.position.y);
     Vector2 rightCheck = new Vector2(transform.position.x + jumpBox, transform.position.y);
     Vector2 midCheck = transform.position;
     Vector2 leftEnd = leftCheck;
-    leftEnd.y -= end;
+	leftEnd.y -= (halfHeight + 0.1f);
     Vector2 rightEnd = rightCheck;
-    rightEnd.y -= end;
+	rightEnd.y -=  (halfHeight + 0.1f);
     Vector2 midEnd = midCheck;
-    midEnd.y -= end;
+	midEnd.y -=  (halfHeight + 0.1f);
 
     //Linecast to check for potential blocks in front 
     Vector2 leftCast = leftCheck;
-    leftCast.x -= end * 2;
+	leftCast.x -= jumpBox * 2;
     Vector2 rightCast = rightCheck;
-    rightCast.x += end * 2;
+	rightCast.x += jumpBox * 2;
 
     if (Physics2D.Linecast(leftCheck, leftCast, 1 << LayerMask.NameToLayer("Block")))
     {
