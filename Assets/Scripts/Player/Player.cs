@@ -135,7 +135,7 @@ abstract public class Player : MonoBehaviour
     }
 
     // Call Movement function.
-    Movement(horizontal, (Input.GetKeyDown("w") || Input.GetKeyDown("k")));
+		Movement(horizontal, Input.GetKeyDown("w") || Input.GetKeyDown("space"));
   }
 
   // Returns the y-position of the ground the player was last standing on.

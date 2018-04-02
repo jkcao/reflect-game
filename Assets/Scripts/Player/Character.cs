@@ -26,7 +26,7 @@ public class Character : Player
 			if ((dir == -1 && !hitRight) || (dir == 1 && !hitLeft))
 			{
 				GameObject block = (GameObject)Instantiate(blockPrefab);
-				block.GetComponent<Transform>().position = new Vector2(transform.position.x + (dir * 2f), transform.position.y + 1f);
+				block.GetComponent<Transform>().position = new Vector2(transform.position.x + (dir * 2.3f), transform.position.y + .4f);
 			}
 		}
   }
