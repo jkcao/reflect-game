@@ -37,8 +37,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1243748863419246}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 74.88, y: 0.49, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 108, y: 1.2, z: 0}
+  m_LocalScale: {x: 1, y: 0.9, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  jumpHeight: 30
-  jumpBox: 0.5
+  jumpHeight: 35
+  jumpBox: 0.8
   blockPrefab: {fileID: 1553334865158246, guid: d4cd1e8013f354157b2995d9b60d69b4,
     type: 2}
   restrictedPlat: {fileID: 1547919639443586, guid: 3ba0f899b6baa4a31b7f8ef3b8e15b94,
