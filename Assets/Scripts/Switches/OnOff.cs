@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 abstract public class OnOff : MonoBehaviour {
+	public Sprite onSprite;
+	public Sprite offSprite;
 	
 	protected bool turnOn;
 	protected bool cCol;
 	protected bool rCol;
 	protected SpriteRenderer switchVisual;
-	protected Color color1;
-	protected Color color2;
 
 	// Use this for initialization
 	void Start () {
@@ -17,8 +17,6 @@ abstract public class OnOff : MonoBehaviour {
 		cCol = false;
 		rCol = false;
 		switchVisual = GetComponent<SpriteRenderer>();
-		color1 = switchVisual.material.GetColor("_EmissionColor");
-		color2 = Color.black;
 		begin ();
 	}
 
@@ -52,9 +50,9 @@ abstract public class OnOff : MonoBehaviour {
 	// This can later be replaced to a sprite change.
 	protected void changeVisual(bool turnOn) {
 		if(turnOn) {
-			switchVisual.material.SetColor ("_EmissionColor", color2);
+			switchVisual.sprite = offSprite;
 		} else {
-			switchVisual.material.SetColor ("_EmissionColor", color1);
+			switchVisual.sprite = onSprite;
 		}
 	}
 
