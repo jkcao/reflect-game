@@ -61,12 +61,17 @@ abstract public class OnOff : MonoBehaviour {
 		return turnOn;
 	}
 
+	IEnumerator switchOn(bool x) {
+		yield return new WaitForSeconds(0.15f);
+		turnOn = x;
+		changeVisual (turnOn);
+		action (turnOn);
+	}
+
 	// Function to set the on/off bool from other scripts and perform the necessary changes.
 	public void setOnBool(bool x){
 		if (turnOn != x) {
-			turnOn = x;
-			changeVisual (turnOn);
-			action (turnOn);
+			StartCoroutine (switchOn(x));
 		}
 	}
 

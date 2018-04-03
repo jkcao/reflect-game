@@ -18,6 +18,12 @@ public class Character : Player
     }
   }
 
+	IEnumerator placeBlock() {
+		yield return new WaitForSeconds(0.15f);
+		GameObject block = (GameObject)Instantiate(blockPrefab);
+		block.GetComponent<Transform>().position = new Vector2(transform.position.x + (dir * 2.3f), transform.position.y + .4f);
+	}
+
   protected override void SpecialAbility(int condition)
   {
 		if (condition == 0 && restrict.getRestricted() && blockPrefab != null)
@@ -25,8 +31,7 @@ public class Character : Player
 			//Make sure there's nothing already in front of you
 			if ((dir == -1 && !hitRight) || (dir == 1 && !hitLeft))
 			{
-				GameObject block = (GameObject)Instantiate(blockPrefab);
-				block.GetComponent<Transform>().position = new Vector2(transform.position.x + (dir * 2.3f), transform.position.y + .4f);
+				StartCoroutine (placeBlock ());
 			}
 		}
   }
