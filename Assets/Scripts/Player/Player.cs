@@ -61,7 +61,7 @@ abstract public class Player : MonoBehaviour
   void Update()
   {
     // Reset level by player.
-	if (Input.GetKeyDown("space")) 	SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	if (Input.GetKeyDown("return")) 	SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
     // Check if player is grounded, via three points: its center and its two corners.
     Vector2 leftCheck = new Vector2(transform.position.x - jumpBox, transform.position.y);
