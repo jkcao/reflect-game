@@ -76,9 +76,9 @@ abstract public class Player : MonoBehaviour
 
     //Linecast to check for potential blocks in front 
     Vector2 leftCast = leftCheck;
-	leftCast.x -= jumpBox * 2;
+	leftCast.x += 5f;
     Vector2 rightCast = rightCheck;
-	rightCast.x += jumpBox * 2;
+	rightCast.x -= 5f;
 
     if (Physics2D.Linecast(leftCheck, leftCast, 1 << LayerMask.NameToLayer("Block")))
     {

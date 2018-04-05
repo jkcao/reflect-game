@@ -75,13 +75,17 @@ public class FollowBehavior : MonoBehaviour {
 		if(Input.GetKey(KeyCode.RightArrow))
 		{
 			gameStart = false;
-			transform.position = new Vector3(transform.position.x + cameraSpeed, transform.position.y, transform.position.z);
+			if((gameObject.name == "RCamera" && transform.position.x > 10)
+				|| (gameObject.name == "CCamera" && transform.position.x < -10))
+				transform.position = new Vector3(transform.position.x + cameraSpeed, transform.position.y, transform.position.z);
 		}
 
 		// Pan Left
 		if(Input.GetKey(KeyCode.LeftArrow))
 		{
 			gameStart = false;
+			if((gameObject.name == "RCamera" && transform.position.x < 100)
+				|| (gameObject.name == "CCamera" && transform.position.x > -100))
 			transform.position = new Vector3(transform.position.x - cameraSpeed, transform.position.y, transform.position.z);
 		}
 
@@ -91,15 +95,15 @@ public class FollowBehavior : MonoBehaviour {
 		if(Input.GetKey(KeyCode.UpArrow))
 		{
 			// Camera 1
-			if (Camera.allCameras[1].fieldOfView<=125)
+			if (Camera.allCameras[1].fieldOfView<=12)
 				Camera.allCameras[1].fieldOfView +=2;
-			if (Camera.allCameras[1].orthographicSize<=20)
+			if (Camera.allCameras[1].orthographicSize<=12)
 				Camera.allCameras[1].orthographicSize +=0.5f;
 
 			// Camera 1
-			if (Camera.allCameras[0].fieldOfView<=125)
+			if (Camera.allCameras[0].fieldOfView<=12)
 				Camera.allCameras[0].fieldOfView +=2;
-			if (Camera.allCameras[0].orthographicSize<=20)
+			if (Camera.allCameras[0].orthographicSize<=12)
 				Camera.allCameras[0].orthographicSize +=0.5f;
 		}
 
@@ -107,34 +111,24 @@ public class FollowBehavior : MonoBehaviour {
 		if(Input.GetKey(KeyCode.DownArrow))
 		{
 			// Camera 2
-			if (Camera.allCameras[1].fieldOfView>2)
+			if (Camera.allCameras[1].fieldOfView>7)
 				Camera.allCameras[1].fieldOfView -=2;
-			if (Camera.allCameras[1].orthographicSize>=1)
+			if (Camera.allCameras[1].orthographicSize>=7)
 				Camera.allCameras[1].orthographicSize -=0.5f;
 
 			// Camera 1
-			if (Camera.allCameras[0].fieldOfView>2)
+			if (Camera.allCameras[0].fieldOfView>7)
 				Camera.allCameras[0].fieldOfView -=2;
-			if (Camera.allCameras[0].orthographicSize>=1)
+			if (Camera.allCameras[0].orthographicSize>=7)
 				Camera.allCameras[0].orthographicSize -=0.5f;
 		}
 
 		// ----- Snaps Camera back to Player ------ //
 
 		// a, w or d key
-		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.D))
-		{
-			reattachCamera (ychange);
-		}
-
-		// space, j or l key
-		if(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.J) || Input.GetKey(KeyCode.L))
-		{
-			reattachCamera (ychange);
-		}
-
-		// left or right mouse key
-		if(Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1))
+		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.D)
+		   || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.J) || Input.GetKey(KeyCode.L)
+		   || Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1))
 		{
 			reattachCamera (ychange);
 		}

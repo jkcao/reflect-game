@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4048788678233456}
   - component: {fileID: 212779363701396444}
   - component: {fileID: 61285215939691388}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: MakeBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
