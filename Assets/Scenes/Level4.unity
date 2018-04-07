@@ -23684,19 +23684,31 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 753003b9bac18426faef2f24c1d57e68,
+      objectReference: {fileID: 21300000, guid: 0346c08c441eb44239a46ae03116864c,
         type: 3}
     - target: {fileID: 114476954822675924, guid: 5500ca38901cf4ef4b4116810995c1f4,
         type: 2}
       propertyPath: onSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 753003b9bac18426faef2f24c1d57e68,
+      objectReference: {fileID: 21300000, guid: 0346c08c441eb44239a46ae03116864c,
         type: 3}
     - target: {fileID: 114476954822675924, guid: 5500ca38901cf4ef4b4116810995c1f4,
         type: 2}
       propertyPath: offSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 0120329a074184b0bacd404d1dba3b7d,
+      objectReference: {fileID: 21300000, guid: 45a88f85555b64d71b5fb892e1075484,
+        type: 3}
+    - target: {fileID: 114476954822675924, guid: 5500ca38901cf4ef4b4116810995c1f4,
+        type: 2}
+      propertyPath: offHighlightSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dd9dbf43c2d3d4d848ad8245c71aa4ef,
+        type: 3}
+    - target: {fileID: 114476954822675924, guid: 5500ca38901cf4ef4b4116810995c1f4,
+        type: 2}
+      propertyPath: onHighlightSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e55c50d69759444f7a68aa89f46934fa,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5500ca38901cf4ef4b4116810995c1f4, type: 2}
