@@ -65,10 +65,6 @@ public class FollowBehavior : MonoBehaviour {
 			float step = speed * Time.deltaTime;
 			Camera.allCameras [0].transform.position = Vector3.MoveTowards (Camera.main.transform.position, finalPosition.position, step);
 			Camera.allCameras [1].transform.position = Vector3.MoveTowards (Camera.allCameras [1].transform.position, finalPosition.position, step);
-
-			// TODO: Exit level viewing mode when left-camera's pos > target (final) position's x value + x-scale 
-			// 		 and 
-			//		 when right-camera's pos > target (final) position's x value - x-scale
 		}
 
 		// ----- Camera Panning ------ //
