@@ -682,11 +682,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4539019806504078, guid: a655fc93788b04bc2ba85793e580368b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -38.58
+      value: -38.5
       objectReference: {fileID: 0}
     - target: {fileID: 4539019806504078, guid: a655fc93788b04bc2ba85793e580368b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 4.47
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 4539019806504078, guid: a655fc93788b04bc2ba85793e580368b, type: 2}
       propertyPath: m_LocalPosition.z
@@ -728,6 +728,24 @@ Prefab:
       propertyPath: offSprite
       value: 
       objectReference: {fileID: 21300000, guid: abf3bdc669fab40e1a8484909d4a62c2,
+        type: 3}
+    - target: {fileID: 114854609136374948, guid: a655fc93788b04bc2ba85793e580368b,
+        type: 2}
+      propertyPath: onHighlightSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 823546d9f89654c2bafa5db14d05e28a,
+        type: 3}
+    - target: {fileID: 114854609136374948, guid: a655fc93788b04bc2ba85793e580368b,
+        type: 2}
+      propertyPath: offHighlightSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3e6e829e26ea9471994c108d0f84cc91,
+        type: 3}
+    - target: {fileID: 212100034455949452, guid: a655fc93788b04bc2ba85793e580368b,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e44d45c140b4b40978fee6d9c08a069d,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a655fc93788b04bc2ba85793e580368b, type: 2}
@@ -13153,6 +13171,18 @@ Prefab:
       propertyPath: offSprite
       value: 
       objectReference: {fileID: 21300000, guid: 525bff9ff93bd459798c2efb51f8cfba,
+        type: 3}
+    - target: {fileID: 114854609136374948, guid: a655fc93788b04bc2ba85793e580368b,
+        type: 2}
+      propertyPath: onHighlightSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dd6b7250e10e74e00bbe73f1b55417f4,
+        type: 3}
+    - target: {fileID: 114854609136374948, guid: a655fc93788b04bc2ba85793e580368b,
+        type: 2}
+      propertyPath: offHighlightSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d3e214ab7c2e2416c947a88d1d2cc89b,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a655fc93788b04bc2ba85793e580368b, type: 2}

@@ -4,12 +4,14 @@ using UnityEngine;
 
 abstract public class OnOff : MonoBehaviour {
 	public Sprite onSprite;
+	public Sprite onHighlightSprite;
 	public Sprite offSprite;
+	public Sprite offHighlightSprite;
+	public SpriteRenderer switchVisual;
 	
 	protected bool turnOn;
 	protected bool cCol;
 	protected bool rCol;
-	protected SpriteRenderer switchVisual;
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +20,15 @@ abstract public class OnOff : MonoBehaviour {
 		rCol = false;
 		switchVisual = GetComponent<SpriteRenderer>();
 		begin ();
+	}
+
+	protected void OnTriggerEnter2D(Collider2D col) {
+		if (col.gameObject.tag == "Character") {
+			cCol = true;
+		}
+		if (col.gameObject.tag == "Reflection") {
+			rCol = true;
+		}
 	}
 
 	// Checks if the player is in-contact with an OnOff object or not.
@@ -36,6 +47,13 @@ abstract public class OnOff : MonoBehaviour {
 		}
 		if (col.gameObject.tag == "Reflection") {
 			rCol = false;
+		}
+		if (this.GetComponent<CircleCollider2D> ()) {
+			if (turnOn) {
+				switchVisual.sprite = onSprite;
+			} else {
+				switchVisual.sprite = offSprite;
+			}
 		}
 	}
 	
