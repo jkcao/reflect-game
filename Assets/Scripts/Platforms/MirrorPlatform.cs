@@ -40,7 +40,10 @@ public class MirrorPlatform : MonoBehaviour {
 			}
 			StartCoroutine(DestroySprite());
 		}
-	}
+    collided.StartSparkles();
+    collided.mirror.StartSparkles();
+
+  }
 
 	//Adjust the mirror platform position if necessary.
 	protected void OnCollisionStay2D (Collision2D col){
@@ -63,6 +66,8 @@ public class MirrorPlatform : MonoBehaviour {
 				allocated.transform.position = mirrored;
 			}
 		}
+
+    
 	}
 
 	// Destroy the mirrored platform on exit.
@@ -71,5 +76,7 @@ public class MirrorPlatform : MonoBehaviour {
 			Destroy (allocated);
 			allocated = null;
 		}
-	}
+    collided.StopSparkles();
+    collided.mirror.StopSparkles();
+  }
 }

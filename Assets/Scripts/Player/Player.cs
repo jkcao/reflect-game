@@ -11,6 +11,7 @@ abstract public class Player : MonoBehaviour
   public float jumpBox;
   public GameObject blockPrefab;
   public GameObject restrictedPlat;
+  public ParticleSystem dust;
 
   protected Rigidbody2D rigidBody;
   protected bool hitLeft;
@@ -34,6 +35,7 @@ abstract public class Player : MonoBehaviour
     respawn = transform.position;
     halfHeight = this.GetComponent<SpriteRenderer>().bounds.size.y / 2;
     groundPosition = this.transform.position.y - halfHeight;
+    StopSparkles();
   }
 
   protected void OnCollisionEnter2D(Collision2D col)
@@ -133,9 +135,26 @@ abstract public class Player : MonoBehaviour
     {
       SpecialAbility(0);
     }
-
+ 
     // Call Movement function.
 		Movement(horizontal, Input.GetKeyDown("w") || Input.GetKeyDown("space"));
+  }
+
+  public void StartSparkles ()
+  {
+    if (!dust.isPlaying)
+    {
+      dust.Play(true);
+    }
+  }
+
+  public void StopSparkles()
+  {
+    if (dust.isPlaying)
+    {
+      dust.Pause();
+      dust.Clear();
+    }
   }
 
   // Returns the y-position of the ground the player was last standing on.
