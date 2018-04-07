@@ -73,16 +73,18 @@ public class FollowBehavior : MonoBehaviour {
 		if(Input.GetKey(KeyCode.LeftArrow))
 		{
 			gameStart = false;
-			transform.position = new Vector3(transform.position.x + cameraSpeed, transform.position.y, transform.position.z);
-			print ("Camera: Semicolon key pressed");
+			if((gameObject.name == "RCamera" && transform.position.x > 10)
+				|| (gameObject.name == "CCamera" && transform.position.x < -10))
+				transform.position = new Vector3(transform.position.x + cameraSpeed, transform.position.y, transform.position.z);
 		}
 
 		// Pan Left
 		if(Input.GetKey(KeyCode.RightArrow))
 		{
 			gameStart = false;
-			transform.position = new Vector3(transform.position.x - cameraSpeed, transform.position.y, transform.position.z);
-			print ("Camera: Quote key pressed");
+			if((gameObject.name == "RCamera" && transform.position.x < 100)
+				|| (gameObject.name == "CCamera" && transform.position.x > -100))
+				transform.position = new Vector3(transform.position.x - cameraSpeed, transform.position.y, transform.position.z);
 		}
 
 		// ---- Zooming in and out ---- //
