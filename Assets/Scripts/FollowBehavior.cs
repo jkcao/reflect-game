@@ -60,7 +60,7 @@ public class FollowBehavior : MonoBehaviour {
 		float ychange = transform.position.y;
 
 		// ----- Level Walkthrough ---- //
-		if (levelWalkthrough == true) {
+		if (levelWalkthrough == true && initialPosition != null && finalPosition != null) {
 			speed = 3.0f;
 			float step = speed * Time.deltaTime;
 			Camera.allCameras [0].transform.position = Vector3.MoveTowards (Camera.main.transform.position, finalPosition.position, step);
