@@ -167,6 +167,9 @@ public class FollowBehavior : MonoBehaviour {
 	private void reattachCamera(float ychange) {
 		levelWalkthrough = false;
 		gameStart = true;
+		// For both cameras:
+		// TODO: Set z for both cameras to -9 when exiting level viewing mode
+		// TODO: Exit level viewing mode when camera reaches the target position's x value
 		if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
 		transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
 	}
