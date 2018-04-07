@@ -65,6 +65,8 @@ public class FollowBehavior : MonoBehaviour {
 			float step = speed * Time.deltaTime;
 			Camera.allCameras [0].transform.position = Vector3.MoveTowards (Camera.main.transform.position, finalPosition.position, step);
 			Camera.allCameras [1].transform.position = Vector3.MoveTowards (Camera.allCameras [1].transform.position, finalPosition.position, step);
+
+			// TODO: Exit level viewing mode when camera reaches the target (final) position's x value
 		}
 
 		// ----- Camera Panning ------ //
@@ -167,10 +169,10 @@ public class FollowBehavior : MonoBehaviour {
 	private void reattachCamera(float ychange) {
 		levelWalkthrough = false;
 		gameStart = true;
-		// For both cameras:
-		// Refocus z-axis when game starts (level viewing / camera panning ends)
+
+		// Refocus cameras' z-axis when game starts (level viewing / camera panning ends)
 		transform.position = new Vector3(transform.position.x, transform.position.y, -9);
-		// TODO: Exit level viewing mode when camera reaches the target position's x value
+
 		if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
 		transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
 	}
