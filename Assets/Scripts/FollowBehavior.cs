@@ -169,6 +169,7 @@ public class FollowBehavior : MonoBehaviour {
 		gameStart = true;
 		// For both cameras:
 		// TODO: Set z for both cameras to -9 when exiting level viewing mode
+		transform.position = new Vector3(transform.position.x, transform.position.y, -9);
 		// TODO: Exit level viewing mode when camera reaches the target position's x value
 		if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
 		transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
