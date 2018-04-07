@@ -374,6 +374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 342fd7a9449ec4e88ae7f8fb5f5884e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onSprite: {fileID: 0}
+  offSprite: {fileID: 0}
   platform: {fileID: 1717557316389898, guid: 50de89ab772da480cbc002a129209269, type: 2}
   isActiveOnStart: 0
 --- !u!1 &429113426
@@ -799,6 +801,11 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!4 &771923105 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4477837709163184, guid: 50de89ab772da480cbc002a129209269,
+    type: 2}
+  m_PrefabInternal: {fileID: 895998640}
 --- !u!1001 &800963856
 Prefab:
   m_ObjectHideFlags: 0
@@ -853,6 +860,16 @@ Prefab:
       propertyPath: cameraSpeed
       value: -0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114323088092026942, guid: 43f103205c91a42cba6a264fa5ca5967,
+        type: 2}
+      propertyPath: initialPosition
+      value: 
+      objectReference: {fileID: 1059387758}
+    - target: {fileID: 114323088092026942, guid: 43f103205c91a42cba6a264fa5ca5967,
+        type: 2}
+      propertyPath: finalPosition
+      value: 
+      objectReference: {fileID: 813716921}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 43f103205c91a42cba6a264fa5ca5967, type: 2}
   m_IsPrefabParent: 0
@@ -1123,6 +1140,22 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4477837709163184, guid: 50de89ab772da480cbc002a129209269, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 59
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477837709163184, guid: 50de89ab772da480cbc002a129209269, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571907109747580, guid: 50de89ab772da480cbc002a129209269, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 115.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571907109747580, guid: 50de89ab772da480cbc002a129209269, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50de89ab772da480cbc002a129209269, type: 2}
   m_IsPrefabParent: 0
@@ -1378,6 +1411,16 @@ Prefab:
       propertyPath: cameraSpeed
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114209890094424676, guid: a248c8c61db3b4d4aa2fadb0c941d1e7,
+        type: 2}
+      propertyPath: initialPosition
+      value: 
+      objectReference: {fileID: 771923105}
+    - target: {fileID: 114209890094424676, guid: a248c8c61db3b4d4aa2fadb0c941d1e7,
+        type: 2}
+      propertyPath: finalPosition
+      value: 
+      objectReference: {fileID: 1383498976}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a248c8c61db3b4d4aa2fadb0c941d1e7, type: 2}
   m_IsPrefabParent: 0
@@ -1480,6 +1523,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.28, y: 1.28}
   m_EdgeRadius: 0
+--- !u!4 &1383498976 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4571907109747580, guid: 50de89ab772da480cbc002a129209269,
+    type: 2}
+  m_PrefabInternal: {fileID: 895998640}
 --- !u!4 &1396466608 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4231748612009498, guid: bef97d52e67ee478c81a484d7a982e0d,
