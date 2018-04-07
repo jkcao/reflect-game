@@ -11,6 +11,7 @@ TagManager:
   - Character
   - Reflection
   - Restrict
+  - Music
   layers:
   - Default
   - TransparentFX
