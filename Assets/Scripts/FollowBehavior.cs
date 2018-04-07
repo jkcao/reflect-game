@@ -168,6 +168,7 @@ public class FollowBehavior : MonoBehaviour {
 		levelWalkthrough = false;
 		gameStart = true;
 		// For both cameras:
+		// Refocus z-axis when game starts (level viewing / camera panning ends)
 		transform.position = new Vector3(transform.position.x, transform.position.y, -9);
 		// TODO: Exit level viewing mode when camera reaches the target position's x value
 		if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
