@@ -19,24 +19,26 @@ public class FollowBehavior : MonoBehaviour {
 	float yOffset;
 
 	// Panning Camera Speed (using ';' and '"' keys)
-	public float cameraSpeed;
+	float cameraSpeed = 0.5f;
 
 	// Camera: Level Walkthrough Properties
 	public Transform initialPosition;
 	public Transform finalPosition;
 	public float speed;
-	public Color backgroundColor;
 
 	/* Pre-Level Start: Camera moves up slowly until the topmost platform is visible, and slowly moves down	*/
 
-	private bool gameStart;
-	private bool levelWalkthrough;
+	bool gameStart;
+	bool levelWalkthrough;
 
 	void Start() {
 
 		// Inverse for right camera
-		if (gameObject.name == "RCamera") {
+		if (gameObject.name == "CCamera") {
+			print ("CCamera");
+		} else if (gameObject.name == "RCamera") {
 			cameraSpeed = -1 * cameraSpeed;
+			print ("RCamera");
 		}
 
 		// Initial Setup
@@ -45,10 +47,10 @@ public class FollowBehavior : MonoBehaviour {
 
 		// GameStart false at the start
 		gameStart = false;
-		levelWalkthrough = false;
+		levelWalkthrough = true;
 
-		this.backgroundColor = backgroundColor;
-
+		print ("Start Loop");
+		print (ychange);
 	}
 
 	// Update is called once per frame
@@ -57,36 +59,30 @@ public class FollowBehavior : MonoBehaviour {
 		// Properties - Setup
 		float ychange = transform.position.y;
 
-		/*
 		// ----- Level Walkthrough ---- //
 		if (levelWalkthrough == true) {
+			speed = 3.0f;
 			float step = speed * Time.deltaTime;
-			Camera.main.transform.position = Vector3.MoveTowards (Camera.main.transform.position, finalPosition.position, step);
+			Camera.allCameras [0].transform.position = Vector3.MoveTowards (Camera.main.transform.position, finalPosition.position, step);
 			Camera.allCameras [1].transform.position = Vector3.MoveTowards (Camera.allCameras [1].transform.position, finalPosition.position, step);
-			if (Camera.main.transform.position == finalPosition.position || Camera.allCameras [1].transform.position == finalPosition.position) {
-				reattachCamera (initialPosition.position.y);
-			}
 		}
-		*/
 
 		// ----- Camera Panning ------ //
 
 		// Pan Right
-		if(Input.GetKey(KeyCode.RightArrow))
+		if(Input.GetKey(KeyCode.Semicolon))
 		{
 			gameStart = false;
-			if((gameObject.name == "RCamera" && transform.position.x > 10)
-				|| (gameObject.name == "CCamera" && transform.position.x < -10))
-				transform.position = new Vector3(transform.position.x + cameraSpeed, transform.position.y, transform.position.z);
+			transform.position = new Vector3(transform.position.x + cameraSpeed, transform.position.y, transform.position.z);
+			print ("Camera: Semicolon key pressed");
 		}
 
 		// Pan Left
-		if(Input.GetKey(KeyCode.LeftArrow))
+		if(Input.GetKey(KeyCode.Quote))
 		{
 			gameStart = false;
-			if((gameObject.name == "RCamera" && transform.position.x < 100)
-				|| (gameObject.name == "CCamera" && transform.position.x > -100))
 			transform.position = new Vector3(transform.position.x - cameraSpeed, transform.position.y, transform.position.z);
+			print ("Camera: Quote key pressed");
 		}
 
 		// ---- Zooming in and out ---- //
@@ -95,15 +91,15 @@ public class FollowBehavior : MonoBehaviour {
 		if(Input.GetKey(KeyCode.UpArrow))
 		{
 			// Camera 1
-			if (Camera.allCameras[1].fieldOfView<=12)
+			if (Camera.allCameras[1].fieldOfView<=125)
 				Camera.allCameras[1].fieldOfView +=2;
-			if (Camera.allCameras[1].orthographicSize<=12)
+			if (Camera.allCameras[1].orthographicSize<=20)
 				Camera.allCameras[1].orthographicSize +=0.5f;
 
 			// Camera 1
-			if (Camera.allCameras[0].fieldOfView<=12)
+			if (Camera.allCameras[0].fieldOfView<=125)
 				Camera.allCameras[0].fieldOfView +=2;
-			if (Camera.allCameras[0].orthographicSize<=12)
+			if (Camera.allCameras[0].orthographicSize<=20)
 				Camera.allCameras[0].orthographicSize +=0.5f;
 		}
 
@@ -111,32 +107,55 @@ public class FollowBehavior : MonoBehaviour {
 		if(Input.GetKey(KeyCode.DownArrow))
 		{
 			// Camera 2
-			if (Camera.allCameras[1].fieldOfView>7)
+			if (Camera.allCameras[1].fieldOfView>2)
 				Camera.allCameras[1].fieldOfView -=2;
-			if (Camera.allCameras[1].orthographicSize>=7)
+			if (Camera.allCameras[1].orthographicSize>=1)
 				Camera.allCameras[1].orthographicSize -=0.5f;
 
 			// Camera 1
-			if (Camera.allCameras[0].fieldOfView>7)
+			if (Camera.allCameras[0].fieldOfView>2)
 				Camera.allCameras[0].fieldOfView -=2;
-			if (Camera.allCameras[0].orthographicSize>=7)
+			if (Camera.allCameras[0].orthographicSize>=1)
 				Camera.allCameras[0].orthographicSize -=0.5f;
 		}
 
 		// ----- Snaps Camera back to Player ------ //
 
-		// a, w or d key
-		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.D)
-		   || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.J) || Input.GetKey(KeyCode.L)
-		   || Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1))
+		// Left or Right Arrow
+		if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
 		{
 			reattachCamera (ychange);
+			print ("Camera attached");
+		}
+
+		// a, w or d key
+		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.D))
+		{
+			reattachCamera (ychange);
+			print ("Camera attached");
+		}
+
+		// space, j or l key
+		if(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.J) || Input.GetKey(KeyCode.L))
+		{
+			reattachCamera (ychange);
+			print ("Camera attached");
+		}
+
+		// left or right mouse key
+		if(Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1))
+		{
+			reattachCamera (ychange);
+			print ("Camera attached");
 		}
 
 		// ----- GameStart - ReAttach Camera ----- //
 
 		if (gameStart == true) {
 			reattachCamera (ychange);
+			print (ychange);
+		} else {
+			//print ("Camera is in level-exploring mode");
 		}
 	}
 
