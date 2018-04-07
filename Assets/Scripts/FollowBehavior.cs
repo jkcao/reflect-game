@@ -18,7 +18,7 @@ public class FollowBehavior : MonoBehaviour {
 	[SerializeField]
 	float yOffset;
 
-	// Panning Camera Speed (using ';' and '"' keys)
+	// Panning Camera Speed (using left and right arrow keys)
 	float cameraSpeed = 0.5f;
 
 	// Camera: Level Walkthrough Properties
@@ -70,7 +70,7 @@ public class FollowBehavior : MonoBehaviour {
 		// ----- Camera Panning ------ //
 
 		// Pan Right
-		if(Input.GetKey(KeyCode.Semicolon))
+		if(Input.GetKey(KeyCode.LeftArrow))
 		{
 			gameStart = false;
 			transform.position = new Vector3(transform.position.x + cameraSpeed, transform.position.y, transform.position.z);
@@ -78,7 +78,7 @@ public class FollowBehavior : MonoBehaviour {
 		}
 
 		// Pan Left
-		if(Input.GetKey(KeyCode.Quote))
+		if(Input.GetKey(KeyCode.RightArrow))
 		{
 			gameStart = false;
 			transform.position = new Vector3(transform.position.x - cameraSpeed, transform.position.y, transform.position.z);
@@ -121,32 +121,12 @@ public class FollowBehavior : MonoBehaviour {
 
 		// ----- Snaps Camera back to Player ------ //
 
-		// Left or Right Arrow
-		if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
-		{
-			reattachCamera (ychange);
-			print ("Camera attached");
-		}
-
 		// a, w or d key
-		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.D))
+		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.D) 
+			|| Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.J) || Input.GetKey(KeyCode.L) 
+			|| Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1))
 		{
 			reattachCamera (ychange);
-			print ("Camera attached");
-		}
-
-		// space, j or l key
-		if(Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.J) || Input.GetKey(KeyCode.L))
-		{
-			reattachCamera (ychange);
-			print ("Camera attached");
-		}
-
-		// left or right mouse key
-		if(Input.GetKey(KeyCode.Mouse0) || Input.GetKey(KeyCode.Mouse1))
-		{
-			reattachCamera (ychange);
-			print ("Camera attached");
 		}
 
 		// ----- GameStart - ReAttach Camera ----- //
