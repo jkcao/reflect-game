@@ -156,9 +156,7 @@ public class FollowBehavior : MonoBehaviour {
 		transform.position = Vector3.SmoothDamp (transform.position, reattach, ref velocity, 0.05f);
 
 		if (gameStart) {
-			if (trackingTarget.position.y >= -3f)
-				ychange = trackingTarget.position.y + yOffset;
-			Vector3 moveCamera = new Vector3 (trackingTarget.position.x + xOffset + xanchor, ychange + 1.5f, transform.position.z);
+			Vector3 moveCamera = new Vector3 (trackingTarget.position.x + xOffset + xanchor, trackingTarget.position.y + yOffset + 1.5f, transform.position.z);
 			transform.position = Vector3.SmoothDamp (transform.position, moveCamera, ref velocity, 0.05f);
 		}
 	}
