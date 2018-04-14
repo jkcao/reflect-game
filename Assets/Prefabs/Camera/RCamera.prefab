@@ -56,14 +56,14 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0.503
-    y: 0
+    y: 0.15
     width: 0.497
-    height: 1
+    height: 0.7
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 12
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -100,11 +100,9 @@ MonoBehaviour:
   trackingTarget: {fileID: 0}
   xOffset: 0
   yOffset: 0
-  cameraSpeed: 0.2
   initialPosition: {fileID: 0}
   finalPosition: {fileID: 0}
   speed: 0
-  backgroundColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!124 &124324856137440284
 Behaviour:
   m_ObjectHideFlags: 1

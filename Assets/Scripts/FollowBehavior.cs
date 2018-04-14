@@ -18,6 +18,10 @@ public class FollowBehavior : MonoBehaviour {
 	[SerializeField]
 	float yOffset;
 
+	private Vector3 velocity = Vector3.zero;
+	private float ychange;
+	private float xanchor;
+
 	// Panning Camera Speed (using left and right arrow keys)
 	float cameraSpeed = 0.5f;
 
@@ -41,20 +45,21 @@ public class FollowBehavior : MonoBehaviour {
 			print ("RCamera");
 		}
 
+		xanchor = 3f;
+		if (gameObject.name == "RCamera") xanchor = -1f * xanchor;
+
 		// Initial Setup
-		float ychange = transform.position.y;
+		gameStart = true;
+		ychange = trackingTarget.position.y;
 		reattachCamera (ychange);
 
 		// GameStart false at the start
-		gameStart = false;
+		//gameStart = false;
 		levelWalkthrough = true;
-
-		print ("Start Loop");
-		print (ychange);
 	}
 
 	// Update is called once per frame
-	void Update()
+	void FixedUpdate()
 	{
 		// Properties - Setup
 		float ychange = transform.position.y;
@@ -93,15 +98,15 @@ public class FollowBehavior : MonoBehaviour {
 		if(Input.GetKey(KeyCode.UpArrow))
 		{
 			// Camera 1
-			if (Camera.allCameras[1].fieldOfView<=125)
+			if (Camera.allCameras[1].fieldOfView<=14)
 				Camera.allCameras[1].fieldOfView +=2;
-			if (Camera.allCameras[1].orthographicSize<=20)
+			if (Camera.allCameras[1].orthographicSize<=14)
 				Camera.allCameras[1].orthographicSize +=0.5f;
 
 			// Camera 1
-			if (Camera.allCameras[0].fieldOfView<=125)
+			if (Camera.allCameras[0].fieldOfView<=14)
 				Camera.allCameras[0].fieldOfView +=2;
-			if (Camera.allCameras[0].orthographicSize<=20)
+			if (Camera.allCameras[0].orthographicSize<=14)
 				Camera.allCameras[0].orthographicSize +=0.5f;
 		}
 
@@ -109,15 +114,15 @@ public class FollowBehavior : MonoBehaviour {
 		if(Input.GetKey(KeyCode.DownArrow))
 		{
 			// Camera 2
-			if (Camera.allCameras[1].fieldOfView>2)
+			if (Camera.allCameras[1].fieldOfView>9)
 				Camera.allCameras[1].fieldOfView -=2;
-			if (Camera.allCameras[1].orthographicSize>=1)
+			if (Camera.allCameras[1].orthographicSize>=9)
 				Camera.allCameras[1].orthographicSize -=0.5f;
 
 			// Camera 1
-			if (Camera.allCameras[0].fieldOfView>2)
+			if (Camera.allCameras[0].fieldOfView>9)
 				Camera.allCameras[0].fieldOfView -=2;
-			if (Camera.allCameras[0].orthographicSize>=1)
+			if (Camera.allCameras[0].orthographicSize>=9)
 				Camera.allCameras[0].orthographicSize -=0.5f;
 		}
 
@@ -132,16 +137,12 @@ public class FollowBehavior : MonoBehaviour {
 		}
 
 		// ----- GameStart - ReAttach Camera ----- //
-
 		if (gameStart == true) {
 			reattachCamera (ychange);
-			print (ychange);
-		} else {
-			//print ("Camera is in level-exploring mode");
+
 		}
 	}
-
-
+			
 
 	// -- Helpers --
 
@@ -151,10 +152,15 @@ public class FollowBehavior : MonoBehaviour {
 		gameStart = true;
 
 		// Refocus cameras' z-axis when game starts (level viewing / camera panning ends)
-		transform.position = new Vector3(transform.position.x, transform.position.y, -9);
+		Vector3 reattach = new Vector3 (transform.position.x + xanchor, transform.position.y + 1.5f, transform.position.z);
+		transform.position = Vector3.SmoothDamp (transform.position, reattach, ref velocity, 0.05f);
 
-		if(trackingTarget.position.y >= -3f) ychange = trackingTarget.position.y + yOffset;
-		transform.position = new Vector3(trackingTarget.position.x + xOffset, ychange, transform.position.z);
+		if (gameStart) {
+			if (trackingTarget.position.y >= -3f)
+				ychange = trackingTarget.position.y + yOffset;
+			Vector3 moveCamera = new Vector3 (trackingTarget.position.x + xOffset + xanchor, ychange + 1.5f, transform.position.z);
+			transform.position = Vector3.SmoothDamp (transform.position, moveCamera, ref velocity, 0.05f);
+		}
 	}
 
 
