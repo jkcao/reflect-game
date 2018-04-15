@@ -8,6 +8,8 @@ abstract public class OnOff : MonoBehaviour {
 	public Sprite offSprite;
 	public Sprite offHighlightSprite;
 	public SpriteRenderer switchVisual;
+	public ParticleSystem dust;
+	public bool particlesOnAtStart;
 	
 	protected bool turnOn;
 	protected bool cCol;
@@ -20,6 +22,10 @@ abstract public class OnOff : MonoBehaviour {
 		rCol = false;
 		switchVisual = GetComponent<SpriteRenderer>();
 		begin ();
+		if (dust != null) {
+			dust.Pause ();
+			dust.Clear ();
+		}
 	}
 
 	protected void OnTriggerEnter2D(Collider2D col) {
@@ -64,13 +70,24 @@ abstract public class OnOff : MonoBehaviour {
 			setOnBool(!turnOn);
 		}
 	}
-
-	// This can later be replaced to a sprite change.
+		
 	protected void changeVisual(bool turnOn) {
 		if(turnOn) {
 			switchVisual.sprite = offSprite;
+			if (!particlesOnAtStart && dust != null) {
+				dust.Play ();
+			} else {
+				dust.Pause ();
+				dust.Clear ();
+			}
 		} else {
 			switchVisual.sprite = onSprite;
+			if (particlesOnAtStart && dust != null) {
+				dust.Play ();
+			} else {
+				dust.Pause ();
+				dust.Clear ();
+			}
 		}
 	}
 
