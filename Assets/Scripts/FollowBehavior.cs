@@ -23,7 +23,7 @@ public class FollowBehavior : MonoBehaviour {
 	private float xanchor;
 
 	// Panning Camera Speed (using left and right arrow keys)
-	float cameraSpeed = 0.5f;
+	float cameraSpeed = 1.2f;
 
 	// Camera: Level Walkthrough Properties
 	public Transform initialPosition;
@@ -78,18 +78,22 @@ public class FollowBehavior : MonoBehaviour {
 		if(Input.GetKey(KeyCode.LeftArrow))
 		{
 			gameStart = false;
-			if((gameObject.name == "RCamera" && transform.position.x > 10)
-				|| (gameObject.name == "CCamera" && transform.position.x < -10))
-				transform.position = new Vector3(transform.position.x + cameraSpeed, transform.position.y, transform.position.z);
+			if ((gameObject.name == "RCamera" && transform.position.x > 10)
+			   || (gameObject.name == "CCamera" && transform.position.x < -10)) {
+				Vector3 move = new Vector3 (transform.position.x + cameraSpeed, transform.position.y, transform.position.z);
+				transform.position = Vector3.SmoothDamp (transform.position, move, ref velocity, 0.05f);
+			}
 		}
 
 		// Pan Left
 		if(Input.GetKey(KeyCode.RightArrow))
 		{
 			gameStart = false;
-			if((gameObject.name == "RCamera" && transform.position.x < 100)
-				|| (gameObject.name == "CCamera" && transform.position.x > -100))
-				transform.position = new Vector3(transform.position.x - cameraSpeed, transform.position.y, transform.position.z);
+			if ((gameObject.name == "RCamera" && transform.position.x < 100)
+			   || (gameObject.name == "CCamera" && transform.position.x > -100)) {
+				Vector3 move = new Vector3 (transform.position.x - cameraSpeed, transform.position.y, transform.position.z);
+				transform.position = Vector3.SmoothDamp (transform.position, move, ref velocity, 0.05f);
+			}
 		}
 
 		// ---- Zooming in and out ---- //
@@ -101,13 +105,18 @@ public class FollowBehavior : MonoBehaviour {
 			if (Camera.allCameras[1].fieldOfView<=14)
 				Camera.allCameras[1].fieldOfView +=2;
 			if (Camera.allCameras[1].orthographicSize<=14)
-				Camera.allCameras[1].orthographicSize +=0.5f;
+				Camera.allCameras[1].orthographicSize += 6f * Time.deltaTime;
 
 			// Camera 1
 			if (Camera.allCameras[0].fieldOfView<=14)
 				Camera.allCameras[0].fieldOfView +=2;
 			if (Camera.allCameras[0].orthographicSize<=14)
-				Camera.allCameras[0].orthographicSize +=0.5f;
+				Camera.allCameras[0].orthographicSize += 6f * Time.deltaTime;
+
+			if (Camera.allCameras[2].fieldOfView<=14)
+				Camera.allCameras[2].fieldOfView +=2;
+			if (Camera.allCameras[2].orthographicSize<=14)
+				Camera.allCameras[2].orthographicSize += 6f * Time.deltaTime;
 		}
 
 		// Zoom In
@@ -117,13 +126,19 @@ public class FollowBehavior : MonoBehaviour {
 			if (Camera.allCameras[1].fieldOfView>9)
 				Camera.allCameras[1].fieldOfView -=2;
 			if (Camera.allCameras[1].orthographicSize>=9)
-				Camera.allCameras[1].orthographicSize -=0.5f;
+				Camera.allCameras[1].orthographicSize -= 6f * Time.deltaTime;
 
 			// Camera 1
 			if (Camera.allCameras[0].fieldOfView>9)
 				Camera.allCameras[0].fieldOfView -=2;
 			if (Camera.allCameras[0].orthographicSize>=9)
-				Camera.allCameras[0].orthographicSize -=0.5f;
+				Camera.allCameras[0].orthographicSize -= 6f * Time.deltaTime;
+
+			// Camera 1
+			if (Camera.allCameras[2].fieldOfView>9)
+				Camera.allCameras[2].fieldOfView -=2;
+			if (Camera.allCameras[2].orthographicSize>=9)
+				Camera.allCameras[2].orthographicSize -= 6f * Time.deltaTime;
 		}
 
 		// ----- Snaps Camera back to Player ------ //
