@@ -75,18 +75,18 @@ public class FollowBehavior : MonoBehaviour {
 		// ----- Camera Panning ------ //
 
 		// Pan Right
-		if(Input.GetKey(KeyCode.LeftArrow))
+		if(Input.GetKey(KeyCode.RightArrow))
 		{
 			gameStart = false;
-			if ((gameObject.name == "RCamera" && transform.position.x > 10)
-			   || (gameObject.name == "CCamera" && transform.position.x < -10)) {
+			if ((gameObject.name == "RCamera" && transform.position.x > 20)
+			   || (gameObject.name == "CCamera" && transform.position.x < -20)) {
 				Vector3 move = new Vector3 (transform.position.x + cameraSpeed, transform.position.y, transform.position.z);
 				transform.position = Vector3.SmoothDamp (transform.position, move, ref velocity, 0.05f);
 			}
 		}
 
 		// Pan Left
-		if(Input.GetKey(KeyCode.RightArrow))
+		if(Input.GetKey(KeyCode.LeftArrow))
 		{
 			gameStart = false;
 			if ((gameObject.name == "RCamera" && transform.position.x < 100)
