@@ -31,6 +31,7 @@ public class Character : Player
 			//Make sure there's nothing already in front of you
 			if ((dir == -1 && !hitRight) || (dir == 1 && !hitLeft))
 			{
+				this.GetComponent<AudioSource> ().Play ();
 				StartCoroutine (placeBlock ());
 			}
 		}

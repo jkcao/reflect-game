@@ -14,6 +14,7 @@ abstract public class OnOff : MonoBehaviour {
 	protected bool turnOn;
 	protected bool cCol;
 	protected bool rCol;
+	protected AudioSource sound;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +22,7 @@ abstract public class OnOff : MonoBehaviour {
 		cCol = false;
 		rCol = false;
 		switchVisual = GetComponent<SpriteRenderer>();
+		sound = GetComponent<AudioSource> ();
 		begin ();
 		if (dust != null) {
 			dust.Pause ();
@@ -74,19 +76,23 @@ abstract public class OnOff : MonoBehaviour {
 	protected void changeVisual(bool turnOn) {
 		if(turnOn) {
 			switchVisual.sprite = offSprite;
-			if (!particlesOnAtStart && dust != null) {
-				dust.Play ();
-			} else {
-				dust.Pause ();
-				dust.Clear ();
+			if (dust != null) {
+				if (!particlesOnAtStart) {
+					dust.Play ();
+				} else {
+					dust.Pause ();
+					dust.Clear ();
+				}
 			}
 		} else {
 			switchVisual.sprite = onSprite;
-			if (particlesOnAtStart && dust != null) {
-				dust.Play ();
-			} else {
-				dust.Pause ();
-				dust.Clear ();
+			if (dust != null) {
+				if (particlesOnAtStart) {
+					dust.Play ();
+				} else {
+					dust.Pause ();
+					dust.Clear ();
+				}
 			}
 		}
 	}
@@ -100,6 +106,7 @@ abstract public class OnOff : MonoBehaviour {
 		yield return new WaitForSeconds(0.15f);
 		turnOn = x;
 		changeVisual (turnOn);
+		sound.Play ();
 		action (turnOn);
 	}
 

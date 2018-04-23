@@ -10,6 +10,7 @@ public class MirrorPlatform : MonoBehaviour {
 	private Player collided;
 	private Animator anim;
 	private bool animPlaying;
+	private AudioSource sound;
 
 	// Use this for initialization.
 	void Start () {
@@ -18,6 +19,7 @@ public class MirrorPlatform : MonoBehaviour {
 		allocated = null;
 
 		this.GetComponent<Animator>().enabled = false;
+		sound = this.GetComponent<AudioSource> ();
 		animPlaying = false;
 	}
 
@@ -41,6 +43,7 @@ public class MirrorPlatform : MonoBehaviour {
 			firstAlloc = allocated;
 			//Don't want infinitely spawning platforms!
 			if (allocated != null) {
+				sound.Play ();
 				anim = allocated.GetComponent<Animator> ();
 				anim.enabled = true;
 				animPlaying = true;

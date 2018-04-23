@@ -899,6 +899,16 @@ Prefab:
       propertyPath: nextScene
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 212642583768338460, guid: 666e4d617cb864b4cb802ba2689dbaec,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: -319370001
+      objectReference: {fileID: 0}
+    - target: {fileID: 212642583768338460, guid: 666e4d617cb864b4cb802ba2689dbaec,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 666e4d617cb864b4cb802ba2689dbaec, type: 2}
   m_IsPrefabParent: 0
@@ -1167,6 +1177,11 @@ Prefab:
         type: 2}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 198346275509615422, guid: 93723e378425c4b5c8c2af69a9dd1fd8,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
       objectReference: {fileID: 0}
     - target: {fileID: 198346275509615422, guid: 93723e378425c4b5c8c2af69a9dd1fd8,
         type: 2}

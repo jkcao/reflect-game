@@ -5,6 +5,18 @@ using UnityEngine;
 public class Break : MonoBehaviour {
 
   private bool touchingChar;
+  private bool audioPlaying = true;
+
+  IEnumerator Destroy() {
+	yield return new WaitForSeconds(0.15f);
+		Destroy(this.GetComponent<BoxCollider2D>());
+		Destroy(this.GetComponent<SpriteRenderer>());
+  }
+
+	IEnumerator AudioTimer() {
+		yield return new WaitForSeconds(0.4f);
+		audioPlaying = false;
+	}
 
   private void Update()
   {
@@ -12,10 +24,17 @@ public class Break : MonoBehaviour {
     {
 		if (touchingChar)
 		{
-			Destroy(gameObject);
+			this.GetComponent<AudioSource> ().Play ();
+				StartCoroutine (Destroy ());
+				StartCoroutine (AudioTimer ());
 		}
     }
+		if (!audioPlaying) {
+			Destroy(gameObject);
+		}
   }
+
+
 
   private void OnCollisionStay2D(Collision2D other)
   {
