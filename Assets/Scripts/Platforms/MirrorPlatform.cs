@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class MirrorPlatform : MonoBehaviour {
 
-	private Animation anim;
-
 	private float allocatedHeight;
 	private GameObject allocated;
+	private GameObject firstAlloc;
 	private Player collided;
+	private Animator anim;
+	private bool animPlaying;
 
 	// Use this for initialization.
 	void Start () {
@@ -16,7 +17,14 @@ public class MirrorPlatform : MonoBehaviour {
 
 		allocated = null;
 
-		anim = this.GetComponent<Animation> ();
+		this.GetComponent<Animator>().enabled = false;
+		animPlaying = false;
+	}
+
+	IEnumerator animTimer() {
+		yield return new WaitForSeconds(1.2f);
+		Destroy(anim);
+		animPlaying = false;
 	}
 
 	// When in-contact with the player, dynamically allocate the mirrored platform.
@@ -30,12 +38,17 @@ public class MirrorPlatform : MonoBehaviour {
 
 			//Making the new platform.
 			allocated = Instantiate (this.gameObject);
+			firstAlloc = allocated;
 			//Don't want infinitely spawning platforms!
 			if (allocated != null) {
+				anim = allocated.GetComponent<Animator> ();
+				anim.enabled = true;
+				animPlaying = true;
+				anim.Play ("MirrorPlatform");
+				StartCoroutine (animTimer());
 				Destroy (allocated.GetComponent<MirrorPlatform> ());
-				Destroy (allocated.GetComponent<SpriteRenderer> ());
 				allocated.transform.position = mirrored;
-				anim.Play ();
+
 			}
 		}
     collided.StartSparkles();
@@ -49,18 +62,20 @@ public class MirrorPlatform : MonoBehaviour {
 			&& (Input.GetKeyDown("a") || Input.GetKeyDown("d"))) {
 
 			if(collided == null) collided = col.gameObject.GetComponent<Player> ();
-				
-			Destroy (allocated);
-						
+
 			Vector2 mirrored = new Vector2 (-(transform.position.x - collided.transform.position.x) + collided.mirror.transform.position.x,
 						                  collided.mirror.getGroundPosition () - collided.getGroundPosition () + allocatedHeight);
 	
+			if (allocated != firstAlloc && allocated != null) Destroy (allocated);
+			if (!animPlaying && firstAlloc != null) Destroy (firstAlloc);
+
 			//Making the new platform.
 			allocated = Instantiate (this.gameObject);
 			//Don't want infinitely spawning platforms!
 			if (allocated != null) {
 				Destroy (allocated.GetComponent<MirrorPlatform> ());
 				Destroy (allocated.GetComponent<SpriteRenderer> ());
+				Destroy (allocated.GetComponent<Animator> ());
 				allocated.transform.position = mirrored;
 			}
 		}
