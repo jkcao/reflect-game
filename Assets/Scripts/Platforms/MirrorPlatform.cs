@@ -89,8 +89,8 @@ public class MirrorPlatform : MonoBehaviour {
 	// Destroy the mirrored platform on exit.
 	protected void OnCollisionExit2D (Collision2D col){
 		if (col.gameObject.tag == "Character" || col.gameObject.tag == "Reflection") {
+			if (allocated != firstAlloc) Destroy (firstAlloc);
 			Destroy (allocated);
-			allocated = null;
 		}
     collided.StopSparkles();
     collided.mirror.StopSparkles();
