@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MirrorPlatform : MonoBehaviour {
-	
+
+	public Animation anim;
+
 	private float allocatedHeight;
 	private GameObject allocated;
 	private Player collided;
@@ -13,13 +15,6 @@ public class MirrorPlatform : MonoBehaviour {
 		allocatedHeight = this.transform.position.y;
 
 		allocated = null;
-	}
-
-	// Timer on sprite.
-	IEnumerator DestroySprite()
-	{
-		yield return new WaitForSeconds(0.25f);
-		if (allocated != null) Destroy(allocated.GetComponent<SpriteRenderer>());
 	}
 
 	// When in-contact with the player, dynamically allocate the mirrored platform.
@@ -37,8 +32,8 @@ public class MirrorPlatform : MonoBehaviour {
 			if (allocated != null) {
 				Destroy (allocated.GetComponent<MirrorPlatform> ());
 				allocated.transform.position = mirrored;
+				anim.Play ();
 			}
-			StartCoroutine(DestroySprite());
 		}
     collided.StartSparkles();
     collided.mirror.StartSparkles();
