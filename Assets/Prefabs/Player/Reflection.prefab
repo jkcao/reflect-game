@@ -57,7 +57,7 @@ Rigidbody2D:
   m_Mass: 60
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 10
+  m_GravityScale: 7
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -100,12 +100,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  jumpHeight: 35
+  jumpHeight: 29
   jumpBox: 0.8
   blockPrefab: {fileID: 1553334865158246, guid: d4cd1e8013f354157b2995d9b60d69b4,
     type: 2}
   restrictedPlat: {fileID: 1547919639443586, guid: 3ba0f899b6baa4a31b7f8ef3b8e15b94,
     type: 2}
+  dust: {fileID: 0}
   respawn: {x: 0, y: 0}
   mirror: {fileID: 0}
 --- !u!212 &212674116403992972
