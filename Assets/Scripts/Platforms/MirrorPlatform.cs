@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MirrorPlatform : MonoBehaviour {
 
-	public Animation anim;
+	private Animation anim;
 
 	private float allocatedHeight;
 	private GameObject allocated;
@@ -15,6 +15,8 @@ public class MirrorPlatform : MonoBehaviour {
 		allocatedHeight = this.transform.position.y;
 
 		allocated = null;
+
+		anim = this.GetComponent<Animation> ();
 	}
 
 	// When in-contact with the player, dynamically allocate the mirrored platform.
@@ -31,6 +33,7 @@ public class MirrorPlatform : MonoBehaviour {
 			//Don't want infinitely spawning platforms!
 			if (allocated != null) {
 				Destroy (allocated.GetComponent<MirrorPlatform> ());
+				Destroy (allocated.GetComponent<SpriteRenderer> ());
 				allocated.transform.position = mirrored;
 				anim.Play ();
 			}
