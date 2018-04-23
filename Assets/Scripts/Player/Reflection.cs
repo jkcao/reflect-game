@@ -10,7 +10,7 @@ public class Reflection : Player
     // Moves RL and jumps if input & able.
     if (isGrounded && jump)
     {
-      rigidBody.velocity = new Vector2(speed * horizontal, jumpHeight);
+			rigidBody.velocity = new Vector2(-(speed * horizontal), jumpHeight);
     }
     else
     {

@@ -64,13 +64,13 @@ public class FollowBehavior : MonoBehaviour {
 		// Properties - Setup
 		float ychange = transform.position.y;
 
-		// ----- Level Walkthrough ---- //
+		/*// ----- Level Walkthrough ---- //
 		if (levelWalkthrough == true && initialPosition != null && finalPosition != null) {
 			speed = 3.0f;
 			float step = speed * Time.deltaTime;
 			Camera.allCameras [0].transform.position = Vector3.MoveTowards (Camera.main.transform.position, finalPosition.position, step);
 			Camera.allCameras [1].transform.position = Vector3.MoveTowards (Camera.allCameras [1].transform.position, finalPosition.position, step);
-		}
+		}*/
 
 		// ----- Camera Panning ------ //
 
@@ -154,9 +154,8 @@ public class FollowBehavior : MonoBehaviour {
 		// ----- GameStart - ReAttach Camera ----- //
 		if (gameStart == true) {
 			reattachCamera (ychange);
-
+			}
 		}
-	}
 			
 
 	// -- Helpers --

@@ -87,7 +87,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 2
 --- !u!61 &61158936745072578
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -111,7 +111,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4, y: 4}
   m_EdgeRadius: 0
 --- !u!114 &114366699308622514
 MonoBehaviour:
@@ -140,6 +140,8 @@ MonoBehaviour:
   offSprite: {fileID: 21300000, guid: 45a88f85555b64d71b5fb892e1075484, type: 3}
   offHighlightSprite: {fileID: 21300000, guid: dd9dbf43c2d3d4d848ad8245c71aa4ef, type: 3}
   switchVisual: {fileID: 0}
+  dust: {fileID: 0}
+  particlesOnAtStart: 0
   platform: {fileID: 0}
   isActiveOnStart: 0
 --- !u!212 &212592442234748186
