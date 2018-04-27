@@ -18,6 +18,11 @@ public class Character : Player
     }
   }
 
+	protected override void anim(float direction, bool jump)
+	{
+		
+	}
+
 	IEnumerator placeBlock() {
 		yield return new WaitForSeconds(0.15f);
 		GameObject block = (GameObject)Instantiate(blockPrefab);

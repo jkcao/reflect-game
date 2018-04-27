@@ -22,6 +22,7 @@ abstract public class Player : MonoBehaviour
   protected float groundPosition;
   protected float halfHeight;
   protected Block restrict;
+  protected Animator animPlay;
   public Vector2 respawn;
 
   public Player mirror;
@@ -30,6 +31,7 @@ abstract public class Player : MonoBehaviour
   void Start()
   {
     rigidBody = GetComponent<Rigidbody2D>();
+	animPlay = GetComponent<Animator> ();
     if (restrictedPlat != null) restrict = restrictedPlat.GetComponent<Block>();
     isGrounded = true;
     respawn = transform.position;
@@ -136,8 +138,23 @@ abstract public class Player : MonoBehaviour
       SpecialAbility(0);
     }
  
+		bool jump = Input.GetKeyDown ("w");
+
     // Call Movement function.
-		Movement(horizontal, Input.GetKeyDown("w") || Input.GetKeyDown("space"));
+		Movement(horizontal, jump);
+
+		if (horizontal < 0) {
+			transform.localRotation = Quaternion.Euler (0, 180, 0);
+		} else if (horizontal > 0) {
+			transform.localRotation = Quaternion.Euler (0, 0, 0);
+		}
+		if (jump) {
+			animPlay.SetTrigger ("jump");
+		} else if ((horizontal != 0)) {
+			animPlay.SetTrigger ("move");
+		} else {
+			animPlay.SetTrigger ("idle");
+		}
   }
 
   public void StartSparkles ()
@@ -165,4 +182,5 @@ abstract public class Player : MonoBehaviour
 
   protected abstract void Movement(float horizontal, bool jump);
   protected abstract void SpecialAbility(int condition);
+	protected abstract void anim(float direction, bool jump);
 }

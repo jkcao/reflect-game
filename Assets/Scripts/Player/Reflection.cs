@@ -19,6 +19,11 @@ public class Reflection : Player
     }
   }
 
+	protected override void anim(float direction, bool jump)
+	{
+		
+	}
+
   protected override void SpecialAbility(int condition)
   {
     
