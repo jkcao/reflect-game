@@ -12,6 +12,8 @@ TagManager:
   - Reflection
   - Restrict
   - Music
+  - breakBlock
+  - makeBlock
   layers:
   - Default
   - TransparentFX

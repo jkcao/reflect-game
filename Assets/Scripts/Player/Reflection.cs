@@ -5,27 +5,22 @@ using UnityEngine;
 public class Reflection : Player
 {
 
-  protected override void Movement(float horizontal, bool jump)
+  protected override void Movement(bool canMove, float horizontal, bool jump)
   {
-    // Moves RL and jumps if input & able.
-    if (isGrounded && jump)
-    {
-			rigidBody.velocity = new Vector2(-(speed * horizontal), jumpHeight);
-    }
-    else
-    {
-      rigidBody.velocity = new Vector2(-(speed * horizontal), rigidBody.velocity.y);
-      isGrounded = false;
-    }
+		if (canMove) {
+			// Moves RL and jumps if input & able.
+			if (isGrounded && jump) {
+				rigidBody.velocity = new Vector2 (-(speed * horizontal), jumpHeight);
+			} else {
+				rigidBody.velocity = new Vector2 (-(speed * horizontal), rigidBody.velocity.y);
+				isGrounded = false;
+			}
+		} else {
+			rigidBody.velocity = new Vector2 (0, 0);
+		}
   }
 
-	protected override void anim(float direction, bool jump)
+	protected override void SpecialAbility(int condition)
 	{
-		
 	}
-
-  protected override void SpecialAbility(int condition)
-  {
-    
-  }
 }

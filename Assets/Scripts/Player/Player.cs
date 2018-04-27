@@ -24,8 +24,11 @@ abstract public class Player : MonoBehaviour
   protected Block restrict;
   protected Animator animPlay;
   public Vector2 respawn;
+  protected bool specAbil;
+	protected bool canMove;
 
   public Player mirror;
+
 
   // Use this for initialization
   void Start()
@@ -34,18 +37,17 @@ abstract public class Player : MonoBehaviour
 	animPlay = GetComponent<Animator> ();
     if (restrictedPlat != null) restrict = restrictedPlat.GetComponent<Block>();
     isGrounded = true;
+	specAbil = false;
+		canMove = true;
     respawn = transform.position;
     halfHeight = this.GetComponent<SpriteRenderer>().bounds.size.y / 2;
     groundPosition = this.transform.position.y - halfHeight;
-    StopSparkles();
+		StopSparkles();
+		animPlay.SetTrigger ("idle");
   }
 
   protected void OnCollisionEnter2D(Collision2D col)
   {
-    if (col.gameObject.tag == "Death")
-    {
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
     if (col.transform.tag == "MovingPlatform")
     {
       transform.parent = col.transform;
@@ -65,7 +67,7 @@ abstract public class Player : MonoBehaviour
   void Update()
   {
     // Reset level by player.
-	if (Input.GetKeyDown("return")) 	SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	if (Input.GetKeyDown("return")) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
     // Check if player is grounded, via three points: its center and its two corners.
     Vector2 leftCheck = new Vector2(transform.position.x - jumpBox, transform.position.y);
@@ -133,7 +135,7 @@ abstract public class Player : MonoBehaviour
       dir = 1;
     }
     // Checking for reflection special ability.
-		if (Input.GetKeyDown("j") || Input.GetMouseButtonDown(0))
+	if (Input.GetKeyDown("j") || Input.GetMouseButtonDown(0))
     {
       SpecialAbility(0);
     }
@@ -141,15 +143,20 @@ abstract public class Player : MonoBehaviour
 		bool jump = Input.GetKeyDown ("w");
 
     // Call Movement function.
-		Movement(horizontal, jump);
+		Movement(canMove, horizontal, jump);
 
+
+		// Animatoin Updates.
 		if (horizontal < 0) {
 			transform.localRotation = Quaternion.Euler (0, 180, 0);
 		} else if (horizontal > 0) {
 			transform.localRotation = Quaternion.Euler (0, 0, 0);
 		}
-		if (jump) {
+		if (jump && isGrounded) {
 			animPlay.SetTrigger ("jump");
+		} else if (specAbil) {
+			animPlay.SetTrigger ("ability");
+			specAbil = false;
 		} else if ((horizontal != 0)) {
 			animPlay.SetTrigger ("move");
 		} else {
@@ -180,7 +187,16 @@ abstract public class Player : MonoBehaviour
     return groundPosition;
   }
 
-  protected abstract void Movement(float horizontal, bool jump);
+	public void setSpecAbil(bool setter) {
+		specAbil = setter;
+	}
+
+
+	public void setCanMove(bool setter) {
+		canMove = setter;
+	}
+
+
+  protected abstract void Movement(bool canMove, float horizontal, bool jump);
   protected abstract void SpecialAbility(int condition);
-	protected abstract void anim(float direction, bool jump);
 }

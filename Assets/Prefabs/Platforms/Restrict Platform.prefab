@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114382754824794496}
   m_Layer: 9
   m_Name: Restrict Platform
-  m_TagString: Untagged
+  m_TagString: makeBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -4,29 +4,28 @@ using UnityEngine;
 
 public class Character : Player
 {
-  protected override void Movement(float horizontal, bool jump)
+  protected override void Movement(bool canMove, float horizontal, bool jump)
   {
-    // Moves LR and jumps if input & able.
-    if (isGrounded && jump)
-    {
-			rigidBody.velocity = new Vector2(-speed * horizontal, jumpHeight);
-    }
-    else
-    {
-			rigidBody.velocity = new Vector2(speed * horizontal, rigidBody.velocity.y);
-      isGrounded = false;
-    }
+		if (canMove) {
+			// Moves LR and jumps if input & able.
+			if (isGrounded && jump) {
+				rigidBody.velocity = new Vector2 (-speed * horizontal, jumpHeight);
+			} else {
+				rigidBody.velocity = new Vector2 (speed * horizontal, rigidBody.velocity.y);
+				isGrounded = false;
+			}
+		} else {
+			rigidBody.velocity = new Vector2 (0, 0);
+		}
   }
 
-	protected override void anim(float direction, bool jump)
-	{
-		
-	}
-
 	IEnumerator placeBlock() {
-		yield return new WaitForSeconds(0.15f);
+		yield return new WaitForSeconds(0.5f);
 		GameObject block = (GameObject)Instantiate(blockPrefab);
-		block.GetComponent<Transform>().position = new Vector2(transform.position.x + (dir * 2.3f), transform.position.y + .4f);
+		block.GetComponent<Transform>().position = new Vector2(transform.position.x + (dir * 2.4f), transform.position.y + .4f);
+		specAbil = false;
+		canMove = true;
+		mirror.setCanMove (true);
 	}
 
   protected override void SpecialAbility(int condition)
@@ -37,6 +36,9 @@ public class Character : Player
 			if ((dir == -1 && !hitRight) || (dir == 1 && !hitLeft))
 			{
 				this.GetComponent<AudioSource> ().Play ();
+				canMove = false;
+				mirror.setCanMove (false);
+				specAbil = true;
 				StartCoroutine (placeBlock ());
 			}
 		}
