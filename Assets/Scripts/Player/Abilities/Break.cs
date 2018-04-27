@@ -6,9 +6,10 @@ public class Break : MonoBehaviour {
 
   private bool touchingChar;
   private bool audioPlaying = true;
+	private Player reflection;
 
   IEnumerator Destroy() {
-	yield return new WaitForSeconds(0.15f);
+	yield return new WaitForSeconds(0.5f);
 		Destroy(this.GetComponent<BoxCollider2D>());
 		Destroy(this.GetComponent<SpriteRenderer>());
   }
@@ -16,6 +17,9 @@ public class Break : MonoBehaviour {
 	IEnumerator AudioTimer() {
 		yield return new WaitForSeconds(0.4f);
 		audioPlaying = false;
+		reflection.setSpecAbil (false);
+		reflection.setCanMove (true);
+		reflection.mirror.setCanMove (true);
 	}
 
   private void Update()
@@ -25,6 +29,11 @@ public class Break : MonoBehaviour {
 		if (touchingChar)
 		{
 			this.GetComponent<AudioSource> ().Play ();
+				if (reflection != null) {
+					reflection.setSpecAbil (true);
+					reflection.setCanMove (false);
+					reflection.mirror.setCanMove (false);
+				}
 				StartCoroutine (Destroy ());
 				StartCoroutine (AudioTimer ());
 		}
@@ -36,11 +45,12 @@ public class Break : MonoBehaviour {
 
 
 
-  private void OnCollisionStay2D(Collision2D other)
+  private void OnCollisionEnter2D(Collision2D other)
   {
     if (other.gameObject.tag == "Reflection")
     {
       touchingChar = true;
+	  reflection = other.gameObject.GetComponent<Player> ();
     }
   }
 
