@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  jumpHeight: 28
+  jumpHeight: 29
   jumpBox: 0.8
   blockPrefab: {fileID: 1553334865158246, guid: d4cd1e8013f354157b2995d9b60d69b4,
     type: 2}

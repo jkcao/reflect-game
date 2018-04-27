@@ -530,6 +530,57 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1001 &196588646
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4523961482401958, guid: 93723e378425c4b5c8c2af69a9dd1fd8, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -74.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523961482401958, guid: 93723e378425c4b5c8c2af69a9dd1fd8, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 9.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523961482401958, guid: 93723e378425c4b5c8c2af69a9dd1fd8, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523961482401958, guid: 93723e378425c4b5c8c2af69a9dd1fd8, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523961482401958, guid: 93723e378425c4b5c8c2af69a9dd1fd8, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523961482401958, guid: 93723e378425c4b5c8c2af69a9dd1fd8, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523961482401958, guid: 93723e378425c4b5c8c2af69a9dd1fd8, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523961482401958, guid: 93723e378425c4b5c8c2af69a9dd1fd8, type: 2}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 198346275509615422, guid: 93723e378425c4b5c8c2af69a9dd1fd8,
+        type: 2}
+      propertyPath: randomSeed
+      value: 1875131905
+      objectReference: {fileID: 0}
+    - target: {fileID: 1919642066678422, guid: 93723e378425c4b5c8c2af69a9dd1fd8, type: 2}
+      propertyPath: m_Name
+      value: Background Particles (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 93723e378425c4b5c8c2af69a9dd1fd8, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &225492471
 Prefab:
   m_ObjectHideFlags: 0
@@ -8994,6 +9045,57 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &590426020
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4523961482401958, guid: 93723e378425c4b5c8c2af69a9dd1fd8, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -56
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523961482401958, guid: 93723e378425c4b5c8c2af69a9dd1fd8, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523961482401958, guid: 93723e378425c4b5c8c2af69a9dd1fd8, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523961482401958, guid: 93723e378425c4b5c8c2af69a9dd1fd8, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523961482401958, guid: 93723e378425c4b5c8c2af69a9dd1fd8, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523961482401958, guid: 93723e378425c4b5c8c2af69a9dd1fd8, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523961482401958, guid: 93723e378425c4b5c8c2af69a9dd1fd8, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4523961482401958, guid: 93723e378425c4b5c8c2af69a9dd1fd8, type: 2}
+      propertyPath: m_RootOrder
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 198346275509615422, guid: 93723e378425c4b5c8c2af69a9dd1fd8,
+        type: 2}
+      propertyPath: randomSeed
+      value: 575068145
+      objectReference: {fileID: 0}
+    - target: {fileID: 1919642066678422, guid: 93723e378425c4b5c8c2af69a9dd1fd8, type: 2}
+      propertyPath: m_Name
+      value: Background Particles (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 93723e378425c4b5c8c2af69a9dd1fd8, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &621199836
 GameObject:
   m_ObjectHideFlags: 0
