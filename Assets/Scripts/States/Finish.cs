@@ -13,6 +13,6 @@ public class Finish : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if(Input.anyKeyDown) StartCoroutine (toMenu());
+		if(Input.GetKeyDown("return")) StartCoroutine (toMenu());
 	}
 }
