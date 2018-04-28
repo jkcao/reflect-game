@@ -8,9 +8,6 @@ public class Death : MonoBehaviour {
 	protected void OnTriggerEnter2D (Collider2D col) {
 		if (col.gameObject.tag == "Character" || col.gameObject.tag == "Reflection")
 		{
-			AudioSource audio = this.GetComponent<AudioSource> ();
-			audio.Play ();
-			DontDestroyOnLoad (audio);
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		}
 
