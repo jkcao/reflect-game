@@ -1566,7 +1566,6 @@ GameObject:
   - component: {fileID: 1109964048}
   - component: {fileID: 1109964047}
   - component: {fileID: 1109964046}
-  - component: {fileID: 1109964045}
   - component: {fileID: 1109964044}
   m_Layer: 8
   m_Name: Win
@@ -1583,22 +1582,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1109964043}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66ce26673d3f84c32938e18b7a51b899, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f1c69c31312a41f2b47ca321631fd3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1109964045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1109964043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a609ed3fdc0d4d4d90d4257d2d1d3c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeOutTexture: {fileID: 2800000, guid: cdcefa62926ab4577a287c285410250e, type: 3}
-  fadeSpeed: 0.8
+  nextScene: Finish
 --- !u!82 &1109964046
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7590,23 +7577,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
-  m_TileRefreshArray:
-  - serializedVersion: 1
-    m_DirtyIndex: 0
-  - serializedVersion: 1
-    m_DirtyIndex: 0
-  - serializedVersion: 1
-    m_DirtyIndex: 0
-  - serializedVersion: 1
-    m_DirtyIndex: 0
-  - serializedVersion: 1
-    m_DirtyIndex: 0
-  - serializedVersion: 1
-    m_DirtyIndex: 0
-  - serializedVersion: 1
-    m_DirtyIndex: 0
-  - serializedVersion: 1
-    m_DirtyIndex: 0
 --- !u!1 &2028600610
 GameObject:
   m_ObjectHideFlags: 0
