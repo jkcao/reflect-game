@@ -20,9 +20,10 @@ public class Character : Player
   }
 
 	IEnumerator placeBlock() {
+		Vector2 placeLoc = new Vector2(transform.position.x + (dir * 2.4f), transform.position.y + .4f);
 		yield return new WaitForSeconds(0.5f);
 		GameObject block = (GameObject)Instantiate(blockPrefab);
-		block.GetComponent<Transform>().position = new Vector2(transform.position.x + (dir * 2.4f), transform.position.y + .4f);
+		block.GetComponent<Transform>().position = placeLoc;
 		specAbil = false;
 		canMove = true;
 		mirror.setCanMove (true);
