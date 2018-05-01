@@ -211,7 +211,7 @@ MonoBehaviour:
   landSound: {fileID: 8300000, guid: b0d770d6c852841c1ae0cf7310d36157, type: 3}
   respawn: {x: 0, y: 0}
   mirror: {fileID: 0}
-  makeSound: {fileID: 8300000, guid: 90612392e5cb44ca6863039dd9066817, type: 3}
+  makeSound: {fileID: 8300000, guid: 60993741bc9bd4ed583a12991c846167, type: 3}
 --- !u!212 &212596843284346136
 SpriteRenderer:
   m_ObjectHideFlags: 1
