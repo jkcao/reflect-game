@@ -71,7 +71,8 @@ abstract public class Player : MonoBehaviour
 	if (col.transform.tag == "Grass") {
 		onGrass = true;
 		if (!isGrounded && isCharacter) {
-			audioPlay.clip = landSound;
+				audioPlay.clip = landSound;
+				audioPlay.volume = 0.1f;
 			StartCoroutine (playSound ());
 		}
 	} else {
@@ -179,6 +180,7 @@ abstract public class Player : MonoBehaviour
 			if (isCharacter && onGrass) {
 				audioPlay.Stop ();
 				audioPlay.clip = jumpSound;
+				audioPlay.volume = 0.1f;
 				StartCoroutine (playSound ());
 			}
 		} else if (specAbil) {
@@ -188,6 +190,7 @@ abstract public class Player : MonoBehaviour
 			animPlay.SetTrigger ("move");
 			if (!(soundPlaying) && isCharacter && isGrounded && onGrass) {
 				audioPlay.clip = walkSound;
+				audioPlay.volume = 0.1f;
 				StartCoroutine (playSound ());
 			}
 		} else {

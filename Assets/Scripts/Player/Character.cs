@@ -40,6 +40,7 @@ public class Character : Player
 			{
 				audioPlay.Stop ();
 				audioPlay.clip = makeSound;
+				audioPlay.volume = 0.1f;
 				StartCoroutine (playSound ());
 				soundPlaying = true;
 				canMove = false;
