@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Character : Player
 {
+	public AudioClip makeSound;
+
   protected override void Movement(bool canMove, float horizontal, bool jump)
   {
 		if (canMove) {
@@ -36,7 +38,10 @@ public class Character : Player
 			//Make sure there's nothing already in front of you
 			if ((dir == -1 && !hitRight) || (dir == 1 && !hitLeft))
 			{
-				this.GetComponent<AudioSource> ().Play ();
+				audioPlay.Stop ();
+				audioPlay.clip = makeSound;
+				StartCoroutine (playSound ());
+				soundPlaying = true;
 				canMove = false;
 				mirror.setCanMove (false);
 				specAbil = true;

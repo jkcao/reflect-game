@@ -12,6 +12,9 @@ abstract public class Player : MonoBehaviour
   public GameObject blockPrefab;
   public GameObject restrictedPlat;
   public ParticleSystem dust;
+  public AudioClip walkSound;
+  public AudioClip jumpSound;
+  public AudioClip landSound;
 
   protected Rigidbody2D rigidBody;
   protected bool hitLeft;
@@ -25,7 +28,11 @@ abstract public class Player : MonoBehaviour
   protected Animator animPlay;
   public Vector2 respawn;
   protected bool specAbil;
-	protected bool canMove;
+  protected bool canMove;
+  protected bool onGrass;
+  protected AudioSource audioPlay;
+  protected bool soundPlaying;
+  protected bool isCharacter = false;
 
   public Player mirror;
 
@@ -33,18 +40,27 @@ abstract public class Player : MonoBehaviour
   // Use this for initialization
   void Start()
   {
+	if (gameObject.tag == "Character") isCharacter = true;
+	audioPlay = GetComponent<AudioSource> ();
     rigidBody = GetComponent<Rigidbody2D>();
 	animPlay = GetComponent<Animator> ();
     if (restrictedPlat != null) restrict = restrictedPlat.GetComponent<Block>();
     isGrounded = true;
 	specAbil = false;
-		canMove = true;
+	canMove = true;
     respawn = transform.position;
     halfHeight = this.GetComponent<SpriteRenderer>().bounds.size.y / 2;
     groundPosition = this.transform.position.y - halfHeight;
-		StopSparkles();
-		animPlay.SetTrigger ("idle");
+	StopSparkles();
+	animPlay.SetTrigger ("idle");
   }
+		
+	protected IEnumerator playSound() {
+		audioPlay.Play ();
+		soundPlaying = true;
+		yield return new WaitForSeconds(audioPlay.clip.length);
+		soundPlaying = false;
+	}
 
   protected void OnCollisionEnter2D(Collision2D col)
   {
@@ -52,6 +68,15 @@ abstract public class Player : MonoBehaviour
     {
       transform.parent = col.transform;
     }
+	if (col.transform.tag == "Grass") {
+		onGrass = true;
+		if (!isGrounded && isCharacter) {
+			audioPlay.clip = landSound;
+			StartCoroutine (playSound ());
+		}
+	} else {
+		onGrass = false;
+	}
   }
 
   protected void OnCollisionExit2D(Collision2D col)
@@ -112,8 +137,8 @@ abstract public class Player : MonoBehaviour
       || Physics2D.Linecast(midCheck, midEnd, 1 << LayerMask.NameToLayer("Ground"))
 	  || Physics2D.Linecast(leftCheck, leftEnd, 1 << LayerMask.NameToLayer("Block"))
 	  || Physics2D.Linecast(rightCheck, rightEnd, 1 << LayerMask.NameToLayer("Block"))
-			|| Physics2D.Linecast(midCheck, midEnd, 1 << LayerMask.NameToLayer("Block"))
-			|| Physics2D.Linecast(midCheck, midEnd, 1 << LayerMask.NameToLayer("Break"))))
+	  || Physics2D.Linecast(midCheck, midEnd, 1 << LayerMask.NameToLayer("Block"))
+	  || Physics2D.Linecast(midCheck, midEnd, 1 << LayerMask.NameToLayer("Break"))))
     {
       isGrounded = true;
     }
@@ -139,13 +164,9 @@ abstract public class Player : MonoBehaviour
 	if (Input.GetKeyDown("j") || Input.GetMouseButtonDown(0))
     {
       SpecialAbility(0);
-    }
- 
+	}
+
 		bool jump = Input.GetKeyDown ("w");
-
-    // Call Movement function.
-		Movement(canMove, horizontal, jump);
-
 
 		// Animatoin Updates.
 		if (horizontal < 0) {
@@ -155,14 +176,26 @@ abstract public class Player : MonoBehaviour
 		}
 		if (jump && isGrounded) {
 			animPlay.SetTrigger ("jump");
+			if (isCharacter && onGrass) {
+				audioPlay.Stop ();
+				audioPlay.clip = jumpSound;
+				StartCoroutine (playSound ());
+			}
 		} else if (specAbil) {
 			animPlay.SetTrigger ("ability");
 			specAbil = false;
 		} else if ((horizontal != 0)) {
 			animPlay.SetTrigger ("move");
+			if (!(soundPlaying) && isCharacter && isGrounded && onGrass) {
+				audioPlay.clip = walkSound;
+				StartCoroutine (playSound ());
+			}
 		} else {
 			animPlay.SetTrigger ("idle");
 		}
+
+    // Call Movement function.
+		Movement(canMove, horizontal, jump);
   }
 
   public void StartSparkles ()

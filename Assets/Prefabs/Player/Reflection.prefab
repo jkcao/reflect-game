@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 50728495175146862}
   - component: {fileID: 61931930583115308}
   - component: {fileID: 95751293494366180}
+  - component: {fileID: 82619036662283822}
   m_Layer: 0
   m_Name: Reflection
   m_TagString: Reflection
@@ -89,6 +90,86 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 3}
   m_EdgeRadius: 0
+--- !u!82 &82619036662283822
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1243748863419246}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95751293494366180
 Animator:
   serializedVersion: 3
@@ -125,6 +206,9 @@ MonoBehaviour:
   restrictedPlat: {fileID: 1547919639443586, guid: 3ba0f899b6baa4a31b7f8ef3b8e15b94,
     type: 2}
   dust: {fileID: 0}
+  walkSound: {fileID: 8300000, guid: bde61c22c72f945b6ae6f9dc1aaecb80, type: 3}
+  jumpSound: {fileID: 8300000, guid: 93b3b9c073a434e7bad7d9786b645033, type: 3}
+  landSound: {fileID: 8300000, guid: b0d770d6c852841c1ae0cf7310d36157, type: 3}
   respawn: {x: 0, y: 0}
   mirror: {fileID: 0}
 --- !u!212 &212674116403992972

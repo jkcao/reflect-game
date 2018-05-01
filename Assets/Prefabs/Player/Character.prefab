@@ -99,9 +99,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 90612392e5cb44ca6863039dd9066817, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -206,8 +206,12 @@ MonoBehaviour:
   restrictedPlat: {fileID: 1547919639443586, guid: 3ba0f899b6baa4a31b7f8ef3b8e15b94,
     type: 2}
   dust: {fileID: 0}
+  walkSound: {fileID: 8300000, guid: bde61c22c72f945b6ae6f9dc1aaecb80, type: 3}
+  jumpSound: {fileID: 8300000, guid: 93b3b9c073a434e7bad7d9786b645033, type: 3}
+  landSound: {fileID: 8300000, guid: b0d770d6c852841c1ae0cf7310d36157, type: 3}
   respawn: {x: 0, y: 0}
   mirror: {fileID: 0}
+  makeSound: {fileID: 8300000, guid: 90612392e5cb44ca6863039dd9066817, type: 3}
 --- !u!212 &212596843284346136
 SpriteRenderer:
   m_ObjectHideFlags: 1
