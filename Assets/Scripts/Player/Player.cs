@@ -38,14 +38,13 @@ abstract public class Player : MonoBehaviour
 
 
   // Use this for initialization
-  void Start()
-  {
+  void Start() {
+	isGrounded = true;
 	if (gameObject.tag == "Character") isCharacter = true;
 	audioPlay = GetComponent<AudioSource> ();
     rigidBody = GetComponent<Rigidbody2D>();
 	animPlay = GetComponent<Animator> ();
     if (restrictedPlat != null) restrict = restrictedPlat.GetComponent<Block>();
-    isGrounded = true;
 	specAbil = false;
 	canMove = true;
     respawn = transform.position;
@@ -71,8 +70,9 @@ abstract public class Player : MonoBehaviour
 	if (col.transform.tag == "Grass") {
 		onGrass = true;
 		if (!isGrounded && isCharacter) {
+				audioPlay.Stop ();
 				audioPlay.clip = landSound;
-				audioPlay.volume = 0.1f;
+				audioPlay.volume = 0.05f;
 			StartCoroutine (playSound ());
 		}
 	} else {
@@ -145,6 +145,7 @@ abstract public class Player : MonoBehaviour
     }
     else
     {
+	  if(audioPlay.clip == walkSound) audioPlay.Stop ();
       isGrounded = false;
       groundPosition = transform.position.y - halfHeight;
       // Calculate to keep for allocating mirror platform dynamically.
@@ -180,7 +181,7 @@ abstract public class Player : MonoBehaviour
 			if (isCharacter && onGrass) {
 				audioPlay.Stop ();
 				audioPlay.clip = jumpSound;
-				audioPlay.volume = 0.1f;
+				audioPlay.volume = 0.05f;
 				StartCoroutine (playSound ());
 			}
 		} else if (specAbil) {
@@ -189,12 +190,14 @@ abstract public class Player : MonoBehaviour
 		} else if ((horizontal != 0)) {
 			animPlay.SetTrigger ("move");
 			if (!(soundPlaying) && isCharacter && isGrounded && onGrass) {
+				audioPlay.Stop ();
 				audioPlay.clip = walkSound;
-				audioPlay.volume = 0.1f;
+				audioPlay.volume = 0.05f;
 				StartCoroutine (playSound ());
 			}
 		} else {
 			animPlay.SetTrigger ("idle");
+			if(audioPlay.clip == walkSound) audioPlay.Stop ();
 		}
 
     // Call Movement function.
