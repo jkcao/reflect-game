@@ -2944,7 +2944,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1120990832399080, guid: 666e4d617cb864b4cb802ba2689dbaec, type: 2}
       propertyPath: m_TagString
-      value: Ground
+      value: Grass
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114362294586351212, guid: 666e4d617cb864b4cb802ba2689dbaec, type: 2}
